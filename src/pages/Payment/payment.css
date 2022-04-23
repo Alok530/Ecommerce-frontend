@@ -1,0 +1,26 @@
+.paymentpage{
+    width: 100%;
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cardinfo{
+    box-shadow: 0px 0px 8px -1px rgba(0, 0, 0, 0.68);
+    padding: 23px;
+    padding-bottom: 5px;
+    margin-top: -60px;
+}
+.cardinfo h2{
+    margin-top: -10px;
+}
+.cardInput{
+    border: 1px solid gray;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+.cardInput input{
+    border: none;
+    outline: none;
+}

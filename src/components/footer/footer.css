@@ -1,0 +1,18 @@
+.footer{
+    /* background-color: rgb(255, 63, 127); */
+    /* color: ; */
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.8);
+    margin-top: 12px;
+}
+.col-md-4 ul li{
+    list-style: none;
+}
+.footerLink p{
+    margin-bottom: 0px;
+}
+
+@media (max-width:770px){
+    .footerLink{
+        margin-top: 12px;
+    }
+}
