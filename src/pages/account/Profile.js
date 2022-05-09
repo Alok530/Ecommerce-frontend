@@ -6,6 +6,7 @@ import './profile.css'
 import ShopIcon from '@mui/icons-material/Shop';
 import KeyIcon from '@mui/icons-material/Key';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { Link } from 'react-router-dom'
 
 function Profile() {
     return (
@@ -20,44 +21,44 @@ function Profile() {
                         <span className='fw-bold'>Name : </span><span> Alok Kumar Rai</span>
                         <br />
                         <hr className='hr' />
-                        <span className='fw-bold'>Phone : </span><span> 91+ 7321015099</span>
+                        <span className='fw-bold'>Phone : </span><span> 91+ 722222222222321015099</span>
                         <br />
                         <hr className='hr' />
-                        <span className='fw-bold'>Email : </span><span> alok@gmail.com</span>
+                        <span className='fw-bold'>Email : </span><span> alok@dsddddddddddgmail.com</span>
                         <br />
                         <hr className='hr' />
                         <span className='fw-bold'>Gender : </span><span> Male</span>
                     </div>
-                    <button className='orderBtn'>Edit Profile</button>
+                    <Link to={'/updateprofile'} style={{ width: '100%' }}><button className='orderBtn'>Edit Profile</button></Link>
                 </div>
                 <div className="profilebuttom">
-                    <div className="setting">
+                    <Link className='settingLink' to={'/myorder'} style={{ 'textDecoration': 'none', color: 'black' }}><div className="setting">
                         <div className="settingpic me-2">
-                            <ShopIcon style={{'fontSize':'54px'}}/>
+                            <ShopIcon style={{ 'fontSize': '54px' }} />
                         </div>
                         <div className="settingdesc">
                             <h5>Your Orders</h5>
                             <span>Track, Return or Buy</span>
                         </div>
-                    </div>
-                    <div className="setting">
+                    </div></Link>
+                    <Link className='settingLink' to={'/updatepassword'} style={{ 'textDecoration': 'none', color: 'black' }}><div className="setting">
                         <div className="settingpic me-2">
-                            <KeyIcon style={{'fontSize':'54px'}}/>
+                            <KeyIcon style={{ 'fontSize': '54px' }} />
                         </div>
                         <div className="settingdesc">
                             <h5>Security</h5>
                             <span>Change account password</span>
                         </div>
-                    </div>
-                    <div className="setting">
+                    </div></Link>
+                    <Link className='settingLink' to={'/login'} style={{ 'textDecoration': 'none', color: 'black' }}><div className='setting'>
                         <div className="settingpic me-2">
-                            <LogoutIcon style={{'fontSize':'54px'}}/>
+                            <LogoutIcon style={{ 'fontSize': '54px' }} />
                         </div>
                         <div className="settingdesc">
                             <h5>Logout</h5>
                             <span>Return back</span>
                         </div>
-                    </div>
+                    </div></Link>
                 </div>
             </div>
             <Footer />

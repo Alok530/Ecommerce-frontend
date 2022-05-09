@@ -1,14 +1,15 @@
 import React from 'react'
+import './navmenu.css'
 
 function cateorgry() {
     return (
         <>
             <div className="navcategories">
                 <div className="navcategoriesDiv">
-                    <span>Mobiles</span>
+                    <span>All Categories</span>
                     <span>Fashion</span>
                     <span>Electronics</span>
-                    <span>Womens</span>
+                    <span>Footwears</span>
                 </div>
             </div>
         </>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Bottom from '../../components/Bottom/Bottom'
 import Navbar from '../../components/navbar/Navbar'
@@ -7,6 +8,7 @@ import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import AddCircleOutlineTwoToneIcon from '@mui/icons-material/AddCircleOutlineTwoTone';
 
 function Addtocart() {
+    const [quantity, setquantity] = useState(1)
     return (
         <>
             <Navbar />
@@ -16,22 +18,45 @@ function Addtocart() {
                     <div className="cartProducts">
                         <div className="cartitem">
                             <div className="cartItemPic">
-                                <img src="/images/img5.jpg" />
+                                <img src="/images/img4.jpg" />
                             </div>
                             <div className='cartItemRight'>
                                 <div className="cartItemDesc ps-1">
-                                    <span className="fw-bold">Product : </span><span>Spark dkfdfj dkfjdk fjk Shose</span>
+                                    <span>Spark dkfdfj dkfjdk fjk Shose</span>
                                     <br />
-                                    <span className='fw-bold'>Size : </span><span>8</span>                                    
+                                    <span className='fw-bold'>Size : </span><span>8</span>
                                     <br />
-                                    <span className='fw-bold'>Price: </span><span className='fw-bolder'>₹599</span>                                    
+                                    <span className='fw-bold'>Price: </span><span className='fw-bolder'>₹599</span>
                                     <br />
                                     <span className='text-danger'>Remove</span>
                                 </div>
                                 <div className='cartItemqueantity'>
-                                    <RemoveCircleOutlineIcon />
-                                    <span className='fw-bold'>  1  </span>
-                                    <AddCircleOutlineTwoToneIcon />
+                                    <span className='ms-1 me-2'>Qty</span>
+                                    <RemoveCircleOutlineIcon className='quantitytIcon' onClick={()=>{setquantity(quantity-1)}} />
+                                    <span className=''>  {quantity}  </span>
+                                    <AddCircleOutlineTwoToneIcon className='quantitytIcon' onClick={()=>{setquantity(quantity+1)}} />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="cartitem">
+                            <div className="cartItemPic">
+                                <img src="/images/img7.jpg" />
+                            </div>
+                            <div className='cartItemRight'>
+                                <div className="cartItemDesc ps-1">
+                                    <span>Spark dkfdfj dkfjdk fjk Shose</span>
+                                    <br />
+                                    <span className='fw-bold'>Size : </span><span>8</span>
+                                    <br />
+                                    <span className='fw-bold'>Price: </span><span className='fw-bolder'>₹599</span>
+                                    <br />
+                                    <span className='text-danger'>Remove</span>
+                                </div>
+                                <div className='cartItemqueantity'>
+                                    <span className='ms-1 me-2'>Qty</span>
+                                    <RemoveCircleOutlineIcon/>
+                                    <span className=''>  1  </span>
+                                    <AddCircleOutlineTwoToneIcon/>
                                 </div>
                             </div>
                         </div>
@@ -41,39 +66,19 @@ function Addtocart() {
                             </div>
                             <div className='cartItemRight'>
                                 <div className="cartItemDesc ps-1">
-                                    <span className="fw-bold">Product : </span><span>Spark dkfdfj dkfjdk fjk Shose</span>
+                                    <span>Spark dkfdfj dkfjdk fjk Shose</span>
                                     <br />
-                                    <span className='fw-bold'>Size : </span><span>8</span>                                    
+                                    <span className='fw-bold'>Size : </span><span>8</span>
                                     <br />
-                                    <span className='fw-bold'>Price: </span><span className='fw-bolder'>₹599</span>                                    
-                                    <br />
-                                    <span className='text-danger'>Remove</span>
-                                </div>
-                                <div className='cartItemqueantity'>
-                                    <RemoveCircleOutlineIcon />
-                                    <span className='fw-bold'>  1  </span>
-                                    <AddCircleOutlineTwoToneIcon />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="cartitem">
-                            <div className="cartItemPic">
-                                <img src="/images/img5.jpg" />
-                            </div>
-                            <div className='cartItemRight'>
-                                <div className="cartItemDesc ps-1">
-                                    <span className="fw-bold">Product : </span><span>Spark dkfdfj dkfjdk fjk Shose</span>
-                                    <br />
-                                    <span className='fw-bold'>Size : </span><span>8</span>                                    
-                                    <br />
-                                    <span className='fw-bold'>Price: </span><span className='fw-bolder'>₹599</span>                                    
+                                    <span className='fw-bold'>Price: </span><span className='fw-bolder'>₹599</span>
                                     <br />
                                     <span className='text-danger'>Remove</span>
                                 </div>
                                 <div className='cartItemqueantity'>
-                                    <RemoveCircleOutlineIcon />
-                                    <span className='fw-bold'>  1  </span>
-                                    <AddCircleOutlineTwoToneIcon />
+                                    <span className='ms-1 me-2'>Qty</span>
+                                    <RemoveCircleOutlineIcon className='quantitytIcon' />
+                                    <span className=''>  1  </span>
+                                    <AddCircleOutlineTwoToneIcon className='quantitytIcon' />
                                 </div>
                             </div>
                         </div>

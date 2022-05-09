@@ -37,7 +37,7 @@
 
 /* -------------------**********----------------- */
 
-.orderSummary{
+.orderSummary{ 
     width: 35%;
     border: 1px solid grey;
     padding: 8px 20px;
@@ -55,7 +55,7 @@
     padding-top: 15px;
     /* margin-bottom: 0; */
     /* border: 1px solid red; */
-}
+} 
 .orderPrice p{
     margin: 0;
 }
@@ -71,6 +71,10 @@
     padding-bottom: 5px;
     margin-bottom: 8px;
 }
+
+
+
+/*
 .shippingBar{
     margin-top: 50px;
 }
@@ -84,14 +88,43 @@
 .shippingIcon{
     position: relative;
     bottom: 14px;
-    /* border: 1px solid red; */
-    /* width: 40px; */
 }
 .shippingIconMid{
     margin-right: 12%; 
 }
 .shippingtextMid{
     margin-right: 9%;
+}*/
+.shippingProgress{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    /* border: 1px solid red; */
+}
+.stage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border: 1px solid green; */
+}
+.fgb{
+    border: 1px solid gray;
+    width: 20%;
+    margin-top: 25px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.hr{
+    /* margin-top: 0;
+    margin-bottom: 0;
+    height: 2px;
+    width: 100%;
+    border: 1px solid blue;
+    margin: auto;
+    position: relative;
+    bottom: 37px; */
 }
 
 @media (max-width:1000px){
@@ -142,22 +175,23 @@
         font-size: 14px;
     }
 }
+@media (max-width:450px){
+    .stage span{
+        font-size: 13px;
+    }
+    .fgb{
+        width: 10%;
+    }
+}
 @media (max-width:400px){
     .orderSummary{
         width: 90%;
     }
     .cartpage{
-        padding: 23px 5%;
+        padding: 23px 3%;
     }
     .cartItemqueantity{
         font-weight: 500;
         font-size: 12px;
-    }
-    .shippingIconMid{
-        margin-right: 18%; 
-    }
-    .shippingtextMid{
-        margin-right: 5%;
-        font-size: 14px;
     }
 }

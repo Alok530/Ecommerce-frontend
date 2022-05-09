@@ -8,7 +8,7 @@ function Product() {
             <div className="col-md-3 mb-2 mt-2">
                 <Link to={'/product'} style={{'textDecoration':'none','color':'black'}}><div className='m-1 product p-3'>
                     <div className='text-center'>
-                        <img style={{height:'300px',width:'100%'}} src="/images/img5.jpg" />
+                        <img src="https://rukminim1.flixcart.com/image/416/416/kw9krrk0/headphone/e/w/c/-original-imag8z6gfvsgchzj.jpeg?q=70" />
                     </div>
                     <h4 className='my-0'>Women Kurta</h4>
                     <p className='mb-0'>$125</p>

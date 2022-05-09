@@ -1,5 +1,44 @@
 .featuredHr{
     width: 35%;   
     margin: auto;
-    border: 1px solid black;
+    border: 2px solid gray;
+}
+.Featuredtittle{
+    font-weight: 700;
+    font-style: italic;
+    color: black;
+    opacity: 0.7;
+}
+.banner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f2f2f2;
+}
+.bannerImg{
+    width: 100%;
+    flex-basis: 1;
+}
+@media (max-width:500px)
+{
+    .carousel-item img{
+        min-height: 150px;
+        width: 100%;
+    }
+    .prevNextBtn{
+        height: 18px;
+    }
+    .featuredHr{
+        width: 80%;
+    }
+}
+@media (max-width:700px)
+{
+    .gg{
+        border: 2px solid #bdbdbd;
+        margin-right: 1px;
+        margin-left: 1px;
+        padding: 1px;
+        border-radius: 5px;
+    }
 }

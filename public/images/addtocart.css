@@ -3,24 +3,22 @@
     padding: 23px 10%;
 }
 .cart{
-    width: 100%;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.cartProducts{
+.orderAddress{
     display: flex;
     flex-direction: column;
     width: 63%;
 }
-.cartitem{
+.shippingInfo{
     box-shadow: 0px 0px 3px -1px rgba(0, 0, 0, 0.68);
-    display: flex;
-    height: 150px;
-    align-items: center;
     border: 1px solid gainsboro;
     margin-bottom: 12px;
     border-radius: 4px;
+    width: 100%;
+    padding: 18px 15px;
 }
 .cartItemPic img{
     height: 150px;
@@ -39,7 +37,7 @@
 
 /* -------------------**********----------------- */
 
-.orderSummary{
+.orderSummary{ 
     width: 35%;
     border: 1px solid grey;
     padding: 8px 20px;
@@ -55,12 +53,15 @@
     justify-content: space-between;
     align-items: center;
     padding-top: 15px;
-}
+    /* margin-bottom: 0; */
+    /* border: 1px solid red; */
+} 
 .orderPrice p{
     margin: 0;
 }
 .orderBtn{
     width: 100%;
+    margin-top: 12px;
     border: 1px solid white;
     background-color: orangered;
     color: white;
@@ -68,14 +69,33 @@
     border-radius: 7px;
     padding-top: 5px;
     padding-bottom: 5px;
+    margin-bottom: 8px;
 }
-
-.quantitytIcon{
-    font-size: 53px;
+.shippingBar{
+    margin-top: 50px;
+}
+.shippingHR{
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 40%;
+    border: 1px solid black;
+    margin: auto;
+}
+.shippingIcon{
+    position: relative;
+    bottom: 14px;
+    /* border: 1px solid red; */
+    /* width: 40px; */
+}
+.shippingIconMid{
+    margin-right: 12%; 
+}
+.shippingtextMid{
+    margin-right: 9%;
 }
 
 @media (max-width:1000px){
-    .cartItemRight{
+    .orderAddress{
         flex-direction: column;
         align-items: flex-start;
     }
@@ -85,7 +105,7 @@
     .cart{
         flex-direction: column;
     }
-    .cartProducts{
+    .orderAddress{
         width: 100%;
         margin-bottom: 22px;
     }
@@ -95,6 +115,12 @@
     }
     .cartItemRight{
         flex-direction: row;
+    }
+    .shippingHR{
+        width: 70%;
+    }
+    .shippingIconMid{
+        margin-right: 21%; 
     }
 }
 @media (max-width:600px){
@@ -106,21 +132,32 @@
         align-items: flex-start;
     }
 }
+@media (max-width:700px)
+{
+    .shippingIconMid{
+        margin-right: 20%; 
+    }
+    .shippingtextMid{
+        margin-right: 10%;
+        font-size: 14px;
+    }
+}
 @media (max-width:400px){
     .orderSummary{
         width: 90%;
     }
-    .cart{
-        width: 100%;
-    }
     .cartpage{
-        padding: 23px 3%;
+        padding: 23px 5%;
     }
     .cartItemqueantity{
         font-weight: 500;
         font-size: 12px;
     }
-    .cartItemqueantity span{
-        font-size: 15px;
+    .shippingIconMid{
+        margin-right: 18%; 
+    }
+    .shippingtextMid{
+        margin-right: 5%;
+        font-size: 14px;
     }
 }

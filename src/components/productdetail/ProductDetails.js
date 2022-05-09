@@ -1,10 +1,26 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './productdetails.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function ProductDetails() {
+    const showTost = () => {
+        toast.success('Item added to cart', {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme:'colored',
+        });
+    }
     return (
         <>
+            <ToastContainer/>
             <div className="col-md-6 temp">
                 <div className='text-center'>
                     <img className='productDetailImg' src="/images/img5.jpg" />
@@ -29,9 +45,9 @@ function ProductDetails() {
                 </div>
                 <hr />
                 <div className='d-flex align-items-center'>
-                    <h4 className='me-4' style={{'fontWeight':'700'}}>₹599</h4>
+                    <h4 className='me-4' style={{ 'fontWeight': '700' }}>₹599</h4>
                     <Link to={'/cart'}><button className='me-3 BOTTON'>Buy Now</button></Link>
-                    <button className='BOTTON'>Add to Cart</button>
+                    <button className='BOTTON' onClick={showTost}>Add to Cart</button>
                 </div>
                 {/*<div className='mt-4'>
                     <span className='BOTTON' style={{'borderRadius':'18px',backgroundColor:'orangered'}}>Submit Review</span>

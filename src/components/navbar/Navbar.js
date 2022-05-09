@@ -15,16 +15,13 @@ export default function Navbar() {
         <>
             <div className="topbarContainer">
                 <div className="col1">
-                    <Link to={'/shop'} style={{'textDecoration':'none','color':'white'}}><span>FlipKart</span></Link>
+                    <Link to={'/shop'} style={{ 'textDecoration': 'none', 'color': 'white' }}><span>FlipKart</span></Link>
                 </div>
                 <div className="col2">
-                    <span>Phones</span>
-                    <span>Laptops</span>
-                    <span>Mens</span>
-                    <span>Mens</span>
-                    <span>Mens</span>
-                    <span>Mens</span>
-                    <span>Womens</span>
+                    <span>All Categories</span>
+                    <span>Electronics</span>
+                    <span>Footwears</span>
+                    <span>Fashion</span>
                 </div>
                 <div className="col3">
                     {/*<span className='loginBtn me-2'>Login</span>
@@ -33,8 +30,8 @@ export default function Navbar() {
                         <Link to={'/account'}><AccountBoxIcon className='navbarIcon' /></Link>
                     </div>
                     <div className=''>
-                        <Link to={'/cart'} style={{'textDecoration':'none'}}><ShoppingCartIcon className='navbarIcon' /></Link>
-                        <Link to={'/cart'} style={{'textDecoration':'none'}}><span className='cartItemCount'>5</span></Link>
+                        <Link to={'/cart'} style={{ 'textDecoration': 'none' }}><ShoppingCartIcon className='navbarIcon' /></Link>
+                        <Link to={'/cart'} style={{ 'textDecoration': 'none' }}><span className='cartItemCount'>5</span></Link>
                     </div>
                 </div>
             </div>

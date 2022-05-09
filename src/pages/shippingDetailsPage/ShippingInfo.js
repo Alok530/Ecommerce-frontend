@@ -4,7 +4,6 @@ import Navbar from '../../components/navbar/Navbar'
 import './addtocart.css'
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import { Link } from 'react-router-dom';
 
@@ -12,19 +11,24 @@ function ShippingInfo() {
     return (
         <>
             <Navbar />
-            <div className='text-center shippingBar'>
-                <hr className='shippingHR' />
-                <AddLocationAltIcon className='shippingIcon shippingIconMid' />
-                <LocalShippingIcon style={{ color: 'orangered' }} className='shippingIcon shippingIconMid' />
-                <AccountBalanceIcon className='shippingIcon shippingIconMid' />
-                <CheckCircleIcon className='shippingIcon' />
+
+            <div className="shippingProgress">
+                <div className="stage">
+                    <AddLocationAltIcon className='' />
+                    <span className=''>Address</span>
+                </div>
+                <div className="fgb"></div>
+                <div className="stage">
+                    <LocalShippingIcon style={{ color: 'orangered' }} className='' />
+                    <span style={{ color: 'orangered' }} className=''>Order Summary</span>
+                </div>
+                <div className="fgb"></div>
+                <div className="stage">
+                    <AccountBalanceIcon className='' />
+                    <span className=''>Payment</span>
+                </div>
             </div>
-            <div className='text-center'>
-                <span className='shippingIcon shippingtextMid'>Cart</span>
-                <span style={{ color: 'orangered' }} className='shippingIcon shippingtextMid'>Order Details</span>
-                <span className='shippingIcon shippingtextMid'>Payment</span>
-                <span className='shippingIcon'>Order</span>
-            </div>
+
             <div className="cartpage">
                 <div className="cart">
                     <div className="orderAddress">

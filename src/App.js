@@ -9,12 +9,22 @@ import Payment from './pages/Payment/Payment'
 import ProductPage from './pages/productDetails/ProductPage'
 import ShippingAddress from './pages/OrderShippingAddress/ShippingAddress'
 import Profile from './pages/account/Profile'
+import UpdatePassword from './pages/UpdatePassword/UpdatePassword'
+import UpdateProfile from './pages/UpdateProfile/UpdateProfile'
+import Login from './pages/LoginReg/Login'
+import Register from './pages/LoginReg/Register'
+import Tostify from './components/Tostify/Tostify'
+import AllproductsPage from './pages/AllProducts/AllproductsPage'
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/shop" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/tos" element={<Tostify />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<AllproductsPage />} />
         <Route path="/product" element={<ProductPage />} />
         <Route path="/cart" element={<Addtocart />} />
         <Route path="/shippingaddress" element={<ShippingAddress />} />
@@ -22,6 +32,8 @@ function App() {
         <Route path="/payment" element={<Payment />} />
         <Route path="/order" element={<Order />} />
         <Route path="/account" element={<Profile />} />
+        <Route path="/updatepassword" element={<UpdatePassword />} />
+        <Route path="/updateprofile" element={<UpdateProfile />} />
       </Routes>
     </>
   )

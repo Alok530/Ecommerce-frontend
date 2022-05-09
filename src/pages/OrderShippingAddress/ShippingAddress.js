@@ -16,19 +16,25 @@ function ShippingAddress() {
     return (
         <>
             <Navbar />
-            <div className='text-center shippingBar'>
-                <hr className='shippingHR' />
-                <AddLocationAltIcon style={{color:'orangered'}} className='shippingIcon shippingIconMid' />
-                <LocalShippingIcon className='shippingIcon shippingIconMid' />
-                <AccountBalanceIcon className='shippingIcon shippingIconMid' />
-                <CheckCircleIcon className='shippingIcon' />
+            
+            <div className="shippingProgress">
+                <div className="stage">
+                    <AddLocationAltIcon style={{ color: 'orangered' }}/>
+                    <span style={{ color: 'orangered' }}>Address</span>
+                </div>
+                <div className="fgb"></div>
+                <div className="stage">
+                    <LocalShippingIcon />
+                    <span className=''>Order Summary</span>
+                </div>
+                <div className="fgb"></div>
+                <div className="stage">
+                    <AccountBalanceIcon/>
+                    <span className=''>Payment</span>
+                </div>
             </div>
-            <div className='text-center'>
-                <span style={{color:'orangered'}} className='shippingIcon shippingtextMid'>Address</span>
-                <span className='shippingIcon shippingtextMid'>Shipping Details</span>
-                <span className='shippingIcon shippingtextMid'>Payment</span>
-                <span className='shippingIcon'>Order</span>
-            </div>
+
+
             <div className="paymentpage">
                 <div className="cardinfo mt-0">
                     <h2 className='text-center mb-4'>Shipping Details</h2>

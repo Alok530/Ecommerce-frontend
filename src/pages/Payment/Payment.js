@@ -8,27 +8,33 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import KeyIcon from '@mui/icons-material/Key';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import { Link } from 'react-router-dom'
 
 function Payment() {
     return (
         <>
             <Navbar/>
-            <div className='text-center shippingBar'>
-                <hr className='shippingHR' />
-                <ShoppingCartIcon className='shippingIcon shippingIconMid' />
-                <LocalShippingIcon className='shippingIcon shippingIconMid' />
-                <AccountBalanceIcon style={{color:'orangered'}} className='shippingIcon shippingIconMid' />
-                <CheckCircleIcon className='shippingIcon' />
+            
+            <div className="shippingProgress">
+                <div className="stage">
+                    <AddLocationAltIcon className='' />
+                    <span className=''>Address</span>
+                </div>
+                <div className="fgb"></div>
+                <div className="stage">
+                    <LocalShippingIcon className='' />
+                    <span className=''>Order Summary</span>
+                </div>
+                <div className="fgb"></div>
+                <div className="stage">
+                    <AccountBalanceIcon style={{ color: 'orangered' }}/>
+                    <span style={{ color: 'orangered' }} className=''>Payment</span>
+                </div>
             </div>
-            <div className='text-center'>
-                <span className='shippingIcon shippingtextMid'>Address</span>
-                <span className='shippingIcon shippingtextMid'>Order Details</span>
-                <span style={{color:'orangered'}} className='shippingIcon shippingtextMid'>Payment</span>
-                <span className='shippingIcon'>Order</span>
-            </div>
+
+
             <div className="paymentpage">
                 <div className="cardinfo">
                     <h2 className='text-center'>Card Info</h2>
@@ -40,6 +46,7 @@ function Payment() {
                     </div>
                 </div>
             </div>
+
             <Footer/>
             <Bottom/>
         </>
