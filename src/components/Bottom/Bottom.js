@@ -16,7 +16,7 @@ export default function Bottom() {
             <div className="Bottom">
                 <div className="bottomIcon">
                     <div className="bottomIconlink">
-                        <Link style={{'textDecoration':'none'}} to={'/shop'}><HomeIcon style={{ color: "black", "height": '25px' }}/>
+                        <Link style={{'textDecoration':'none'}} to={'/'}><HomeIcon style={{ color: "black", "height": '25px' }}/>
                         <p>Shop</p></Link>
                     </div>
                 </div>

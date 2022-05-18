@@ -10,7 +10,7 @@ function Login() {
     return (
         <>
             <Navbar />
-            <div className="paymentpage" style={{'minHeight':'100vh'}}>
+            <div className="paymentpage" style={{'minHeight':'80vh'}}>
                 <div className="cardinfo mt-4">
                     <h2 className='text-center mb-4 fw-bolder'>Login</h2>
                     <div>
@@ -21,6 +21,7 @@ function Login() {
                     <Link to={'/register'} style={{textDecoration:'none'}}><p className='mb-0 mt-2 text-center'>New to Cart? Create an Account</p></Link>
                 </div>
             </div>
+            <Footer/>
         </>
     )
 }

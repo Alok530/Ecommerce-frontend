@@ -1,18 +1,34 @@
 .footer{
-    /* background-color: rgb(255, 63, 127); */
-    /* color: ; */
+    background-color: #232F3E;
+    color: white;
     box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.8);
     margin-top: 12px;
+    padding-bottom: 1px;
 }
 .col-md-4 ul li{
     list-style: none;
 }
 .footerLink p{
     margin-bottom: 0px;
+    opacity: 0.7;
+    cursor: pointer;
+}
+.followicon{
+    opacity: 0.7;
+}
+.paymentcard img{
+    width: 100px;
+    width: 50px;
+}
+.footerCopyright{
+    opacity: 0.7;
 }
 
 @media (max-width:770px){
     .footerLink{
-        margin-top: 12px;
+        margin-bottom: 20px;
+    }
+    .footerCopyright{
+        font-size: 12px;
     }
 }

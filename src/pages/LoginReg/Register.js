@@ -11,7 +11,7 @@ function Register() {
     return (
         <>
             <Navbar />
-            <div className="paymentpage" style={{'minHeight':'100vh'}}>
+            <div className="paymentpage" style={{'minHeight':'80vh'}}>
                 <div className="cardinfo mt-4">
                     <h2 className='text-center mb-4 fw-bolder'>Register</h2>
                     <div>
@@ -23,6 +23,7 @@ function Register() {
                     <Link to={'/login'} style={{textDecoration:'none'}}><p className='mb-0 mt-2 text-center'>Existing User? Login</p></Link>
                 </div>
             </div>
+            <Footer/>
         </>
     )
 }

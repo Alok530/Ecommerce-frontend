@@ -21,13 +21,15 @@ function Profile() {
                         <span className='fw-bold'>Name : </span><span> Alok Kumar Rai</span>
                         <br />
                         <hr className='hr' />
-                        <span className='fw-bold'>Phone : </span><span> 91+ 722222222222321015099</span>
+                        <span className='fw-bold'>Phone : </span><span> 91+ 2222321015</span>
                         <br />
                         <hr className='hr' />
-                        <span className='fw-bold'>Email : </span><span> alok@dsddddddddddgmail.com</span>
+                        <span className='fw-bold'>Email : </span><span> alok@dddddgmail.com</span>
                         <br />
                         <hr className='hr' />
                         <span className='fw-bold'>Gender : </span><span> Male</span>
+                        <br />
+                        <hr className='hr' />
                     </div>
                     <Link to={'/updateprofile'} style={{ width: '100%' }}><button className='orderBtn'>Edit Profile</button></Link>
                 </div>

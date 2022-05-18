@@ -6,6 +6,7 @@ import Navbar from '../../components/navbar/Navbar'
 import './addtocart.css'
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import AddCircleOutlineTwoToneIcon from '@mui/icons-material/AddCircleOutlineTwoTone';
+import Footer from '../../components/footer/Footer'
 
 function Addtocart() {
     const [quantity, setquantity] = useState(1)
@@ -115,6 +116,7 @@ function Addtocart() {
                     </div>
                 </div>
             </div>
+            <Footer/>
             <Bottom />
         </>
     )

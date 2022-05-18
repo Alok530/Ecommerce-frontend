@@ -6,25 +6,25 @@ import Navbar from '../../components/navbar/Navbar'
 import Footer from '../../components/footer/Footer'
 import Bottom from '../../components/Bottom/Bottom'
 import Cateorgry from '../../components/navbarmenu/Cateorgry'
+import Fproduct from '../../components/FeaturedProduct/Fproduct'
 
 function ProductPage() {
     return (
         <div>
-            <Navbar/>
+            <Navbar />
             <div className='container py-4'>
                 <div className="row mb-4">
                     <ProductDetail />
                 </div>
-                <h2>Related Products</h2>
-                <div className="row relatedProductDiv">
-                    <RelatedProduct />
-                    <RelatedProduct />
-                    <RelatedProduct />
-                    <RelatedProduct />
+                <h2 className="Featuredtittle">Related Products</h2>
+                <div className="row d-flex justify-content-between">
+                    <Fproduct imgUrl={'/images/img6.jpg'} />
+                    <Fproduct imgUrl={'/images/img6.jpg'} />
+                    <Fproduct imgUrl={'/images/img6.jpg'} />
                 </div>
             </div>
-            <Footer/>
-            <Bottom/>
+            <Footer />
+            <Bottom />
         </div>
     )
 }
