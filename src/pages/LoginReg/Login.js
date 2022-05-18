@@ -19,6 +19,7 @@ function Login() {
                         <Link to={'/shop'}><button className='orderBtn mt-0'>Login</button></Link>
                     </div>
                     <Link to={'/register'} style={{textDecoration:'none'}}><p className='mb-0 mt-2 text-center'>New to Cart? Create an Account</p></Link>
+                    <Link to={'/'} style={{textDecoration:'none'}}><p className='mb-0 text-center'>Skip Now</p></Link>
                 </div>
             </div>
             <Footer/>

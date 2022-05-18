@@ -21,6 +21,7 @@ function Register() {
                         <Link to={'/shop'}><button className='orderBtn mt-0'>Register</button></Link>
                     </div>
                     <Link to={'/login'} style={{textDecoration:'none'}}><p className='mb-0 mt-2 text-center'>Existing User? Login</p></Link>
+                    <Link to={'/'} style={{textDecoration:'none'}}><p className='mb-0 text-center'>Skip Now</p></Link>
                 </div>
             </div>
             <Footer/>

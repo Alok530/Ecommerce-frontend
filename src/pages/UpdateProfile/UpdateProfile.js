@@ -28,4 +28,4 @@ function UpdatePassword() {
     )
 }
 
-export default UpdatePassword
+export default UpdatePassword;
