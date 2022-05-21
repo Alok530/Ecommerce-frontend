@@ -51,8 +51,8 @@ export default function Navbar() {
                             <Link to={'/cart'} style={{ 'textDecoration': 'none' }}><ShoppingCartIcon className='navbarIcon' /></Link>
                             <Link to={'/cart'} style={{ 'textDecoration': 'none' }}><span className='cartItemCount'>5</span></Link>
                         </div></> : <>
-                        <Link style={{'textDecoration': 'none'}} to={'/register'}><span className='loginBtn me-2'>Login</span></Link>
-                        <Link style={{'textDecoration': 'none'}} to={'/login'}><span className='loginBtn'>Register</span>  </Link>
+                        <Link style={{'textDecoration': 'none'}} to={'/login'}><span className='loginBtn me-2'>Login</span></Link>
+                        <Link style={{'textDecoration': 'none'}} to={'/register'}><span className='loginBtn'>Register</span>  </Link>
                     </>}
                 </div>
             </div>
