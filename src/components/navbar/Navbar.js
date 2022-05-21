@@ -13,12 +13,12 @@ export default function Navbar() {
     }
     const [currentnav, setcurrentnav] = useState("");
     useEffect(() => {
-      if(window.location.pathname=='/')
-      setcurrentnav(1);
-      else if(window.location.pathname=='/products')
-      setcurrentnav(2);
+        if (window.location.pathname == '/')
+            setcurrentnav(1);
+        else if (window.location.pathname == '/products')
+            setcurrentnav(2);
     }, [])
-    
+
     return (
         <>
             <div className="topbarContainer">
@@ -26,8 +26,8 @@ export default function Navbar() {
                     <Link to={'/'} style={{ 'textDecoration': 'none', 'color': 'white' }}><span>FlipKart</span></Link>
                 </div>
                 <div className="col2">
-                    <span><Link to={'/'} className={`link ${currentnav==1?"selectnav":''}`}>Home</Link></span>
-                    <span><Link to={'/products'} className={`link ${currentnav===2?"selectnav":''}`}>Products</Link></span>
+                    <span><Link to={'/'} className={`link ${currentnav == 1 ? "selectnav" : ''}`}>Home</Link></span>
+                    <span><Link to={'/products'} className={`link ${currentnav === 2 ? "selectnav" : ''}`}>Products</Link></span>
                     <div className="">
                         <span data-bs-toggle="dropdown" className='link' aria-expanded="false">
                             Categories
@@ -44,15 +44,16 @@ export default function Navbar() {
                 </div>
 
                 <div className="col3">
-                    {/*<span className='loginBtn me-2'>Login</span>
-    <span className='loginBtn'>Register</span>*/}
-                    <div className='bottomIconlink me-4'>
+                    {window.localStorage.getItem('ecomuserid') ? <><div className='bottomIconlink me-4'>
                         <Link to={'/account'}><AccountBoxIcon className='navbarIcon' /></Link>
                     </div>
-                    <div className=''>
-                        <Link to={'/cart'} style={{ 'textDecoration': 'none' }}><ShoppingCartIcon className='navbarIcon' /></Link>
-                        <Link to={'/cart'} style={{ 'textDecoration': 'none' }}><span className='cartItemCount'>5</span></Link>
-                    </div>
+                        <div className=''>
+                            <Link to={'/cart'} style={{ 'textDecoration': 'none' }}><ShoppingCartIcon className='navbarIcon' /></Link>
+                            <Link to={'/cart'} style={{ 'textDecoration': 'none' }}><span className='cartItemCount'>5</span></Link>
+                        </div></> : <>
+                        <Link style={{'textDecoration': 'none'}} to={'/register'}><span className='loginBtn me-2'>Login</span></Link>
+                        <Link style={{'textDecoration': 'none'}} to={'/login'}><span className='loginBtn'>Register</span>  </Link>
+                    </>}
                 </div>
             </div>
         </>

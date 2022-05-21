@@ -9,6 +9,10 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { Link } from 'react-router-dom'
 
 function Profile() {
+    const logoutfun=()=>{
+        window.localStorage.removeItem("ecomuserid");
+    }
+
     return (
         <>
             <Navbar />
@@ -52,7 +56,7 @@ function Profile() {
                             <span>Change account password</span>
                         </div>
                     </div></Link>
-                    <Link className='settingLink' to={'/login'} style={{ 'textDecoration': 'none', color: 'black' }}><div className='setting'>
+                    <Link className='settingLink' onClick={()=>{logoutfun()}} to={'/login'} style={{ 'textDecoration': 'none', color: 'black' }}><div className='setting'>
                         <div className="settingpic me-2">
                             <LogoutIcon style={{ 'fontSize': '54px' }} />
                         </div>
