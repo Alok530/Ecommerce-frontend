@@ -1,4 +1,4 @@
-import React from 'react'
+import {React,useContext,useEffect} from 'react'
 import Bottom from '../../components/Bottom/Bottom'
 import Navbar from '../../components/navbar/Navbar'
 import './addtocart.css'
@@ -6,8 +6,13 @@ import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import { Link } from 'react-router-dom';
+import EcartContext from '../../context/CartContext'
 
 function ShippingInfo() {
+    const { scrolltoTopfun } = useContext(EcartContext);
+    useEffect(() => {
+        scrolltoTopfun();
+    }, [])
     return (
         <>
             <Navbar />

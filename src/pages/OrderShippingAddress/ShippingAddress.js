@@ -1,4 +1,4 @@
-import React from 'react'
+import {React,useContext,useEffect} from 'react'
 import Bottom from '../../components/Bottom/Bottom'
 import Footer from '../../components/footer/Footer'
 import Navbar from '../../components/navbar/Navbar'
@@ -11,15 +11,20 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import { Link } from 'react-router-dom';
+import EcartContext from '../../context/CartContext'
 
 function ShippingAddress() {
+    const { scrolltoTopfun } = useContext(EcartContext);
+    useEffect(() => {
+        scrolltoTopfun();
+    }, [])
     return (
         <>
             <Navbar />
-            
+
             <div className="shippingProgress">
                 <div className="stage">
-                    <AddLocationAltIcon style={{ color: 'orangered' }}/>
+                    <AddLocationAltIcon style={{ color: 'orangered' }} />
                     <span style={{ color: 'orangered' }}>Address</span>
                 </div>
                 <div className="fgb"></div>
@@ -29,7 +34,7 @@ function ShippingAddress() {
                 </div>
                 <div className="fgb"></div>
                 <div className="stage">
-                    <AccountBalanceIcon/>
+                    <AccountBalanceIcon />
                     <span className=''>Payment</span>
                 </div>
             </div>

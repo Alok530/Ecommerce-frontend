@@ -1,4 +1,4 @@
-import React from 'react'
+import {React,useContext,useEffect} from 'react'
 import Bottom from '../../components/Bottom/Bottom'
 import Footer from '../../components/footer/Footer'
 import Navbar from '../../components/navbar/Navbar'
@@ -10,10 +10,15 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import EcartContext from '../../context/CartContext'
 
 const host = "http://localhost:5000/api/";
 
 function Login() {
+    const { scrolltoTopfun } = useContext(EcartContext);
+    useEffect(() => {
+        scrolltoTopfun();
+    }, [])
     const navigate = useNavigate();
     const [email, setemail] = useState("");
     const [password, setpassword] = useState("");
@@ -22,12 +27,12 @@ function Login() {
         console.log('enter for login')
         event.preventDefault();
         try {
-            const response = await axios.post(host+'auth/login',{email,password});
+            const response = await axios.post(host + 'auth/login', { email, password });
             if (response.data.success == true) {
                 window.localStorage.setItem('ecomuserid', response.data.user._id);
                 console.log(response.data.user);
                 navigate('/');
-            }else{
+            } else {
                 console.log(response.data.message);
                 showTost(response.data.message);
                 setemail("");
@@ -53,7 +58,7 @@ function Login() {
 
     return (
         <>
-        <ToastContainer toastStyle={{ backgroundColor: 'red' }}/>
+            <ToastContainer toastStyle={{ backgroundColor: 'red' }} />
             <Navbar />
             <div className="paymentpage" style={{ 'minHeight': '80vh' }}>
                 <div className="cardinfo mt-4">

@@ -3,16 +3,23 @@ import './allproducts.css'
 import Footer from '../../components/footer/Footer'
 import Navbar from '../../components/navbar/Navbar'
 import Fproduct from '../../components/FeaturedProduct/Fproduct'
-import { useState } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import Item from '../../components/ProductItem/Item'
 import Bottom from '../../components/Bottom/Bottom'
 import products from '../../products';
+import EcartContext from '../../context/CartContext'
 
 function AllproductsPage() {
+    const { scrolltoTopfun } = useContext(EcartContext);
     const [inputval, setinputval] = useState(1);
     const [filtter, setfiltter] = useState("");
     const [onclickClass, setonclickClass] = useState("");
     const [line, setline] = useState("");
+
+    useEffect(() => {
+      scrolltoTopfun();
+    }, [])
+    
     return (
         <>
             <Navbar />

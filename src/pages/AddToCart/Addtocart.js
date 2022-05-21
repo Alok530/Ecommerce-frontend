@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState,useContext,useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Bottom from '../../components/Bottom/Bottom'
 import Navbar from '../../components/navbar/Navbar'
@@ -7,8 +7,13 @@ import './addtocart.css'
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import AddCircleOutlineTwoToneIcon from '@mui/icons-material/AddCircleOutlineTwoTone';
 import Footer from '../../components/footer/Footer'
+import EcartContext from '../../context/CartContext'
 
 function Addtocart() {
+    const { scrolltoTopfun } = useContext(EcartContext);
+    useEffect(() => {
+        scrolltoTopfun();
+    }, [])
     const [quantity, setquantity] = useState(1)
     return (
         <>
@@ -33,9 +38,9 @@ function Addtocart() {
                                 </div>
                                 <div className='cartItemqueantity'>
                                     <span className='ms-1 me-2'>Qty</span>
-                                    <RemoveCircleOutlineIcon className='quantitytIcon' onClick={()=>{setquantity(quantity-1)}} />
+                                    <RemoveCircleOutlineIcon className='quantitytIcon' onClick={() => { setquantity(quantity - 1) }} />
                                     <span className=''>  {quantity}  </span>
-                                    <AddCircleOutlineTwoToneIcon className='quantitytIcon' onClick={()=>{setquantity(quantity+1)}} />
+                                    <AddCircleOutlineTwoToneIcon className='quantitytIcon' onClick={() => { setquantity(quantity + 1) }} />
                                 </div>
                             </div>
                         </div>
@@ -55,9 +60,9 @@ function Addtocart() {
                                 </div>
                                 <div className='cartItemqueantity'>
                                     <span className='ms-1 me-2'>Qty</span>
-                                    <RemoveCircleOutlineIcon/>
+                                    <RemoveCircleOutlineIcon />
                                     <span className=''>  1  </span>
-                                    <AddCircleOutlineTwoToneIcon/>
+                                    <AddCircleOutlineTwoToneIcon />
                                 </div>
                             </div>
                         </div>
@@ -116,7 +121,7 @@ function Addtocart() {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
             <Bottom />
         </>
     )

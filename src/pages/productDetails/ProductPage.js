@@ -1,4 +1,4 @@
-import React from 'react'
+import {React,useContext,useEffect} from 'react';
 import './productDetail.css'
 import ProductDetail from '../../components/productdetail/ProductDetails'
 import RelatedProduct from '../../components/RelatedProduct/RelatedProduct'
@@ -7,8 +7,13 @@ import Footer from '../../components/footer/Footer'
 import Bottom from '../../components/Bottom/Bottom'
 import Cateorgry from '../../components/navbarmenu/Cateorgry'
 import Fproduct from '../../components/FeaturedProduct/Fproduct'
+import EcartContext from '../../context/CartContext'
 
 function ProductPage() {
+    const { scrolltoTopfun } = useContext(EcartContext);
+    useEffect(() => {
+        scrolltoTopfun();
+    }, [])
     return (
         <div>
             <Navbar />

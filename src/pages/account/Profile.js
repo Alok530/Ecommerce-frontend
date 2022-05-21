@@ -1,4 +1,4 @@
-import React from 'react'
+import {React,useContext,useEffect} from 'react'
 import Bottom from '../../components/Bottom/Bottom'
 import Footer from '../../components/footer/Footer'
 import Navbar from '../../components/navbar/Navbar'
@@ -6,10 +6,15 @@ import './profile.css'
 import ShopIcon from '@mui/icons-material/Shop';
 import KeyIcon from '@mui/icons-material/Key';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import EcartContext from '../../context/CartContext'
 
 function Profile() {
-    const logoutfun=()=>{
+    const { scrolltoTopfun } = useContext(EcartContext);
+    useEffect(() => {
+        scrolltoTopfun();
+    }, [])
+    const logoutfun = () => {
         window.localStorage.removeItem("ecomuserid");
     }
 
@@ -56,7 +61,7 @@ function Profile() {
                             <span>Change account password</span>
                         </div>
                     </div></Link>
-                    <Link className='settingLink' onClick={()=>{logoutfun()}} to={'/login'} style={{ 'textDecoration': 'none', color: 'black' }}><div className='setting'>
+                    <Link className='settingLink' onClick={() => { logoutfun() }} to={'/login'} style={{ 'textDecoration': 'none', color: 'black' }}><div className='setting'>
                         <div className="settingpic me-2">
                             <LogoutIcon style={{ 'fontSize': '54px' }} />
                         </div>

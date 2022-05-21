@@ -6,10 +6,17 @@ import Navbar from '../../components/navbar/Navbar'
 import Product from '../../components/product/Product'
 import Bottom from '../../components/Bottom/Bottom'
 import Fproduct from '../../components/FeaturedProduct/Fproduct'
-import {useEffect,useState} from 'react';
+import {useEffect,useState, useContext} from 'react';
+import EcartContext from '../../context/CartContext'
 
 function Home() {
+  const { scrolltoTopfun } = useContext(EcartContext);
   const [count, setcount] = useState(1);
+  
+  useEffect(() => {
+    scrolltoTopfun();
+  }, [])
+  
   return (
     <>
       <Navbar />
