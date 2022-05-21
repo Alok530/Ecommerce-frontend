@@ -5,7 +5,7 @@ import StarRatings from 'react-star-ratings';
 import { useNavigate } from 'react-router-dom';
 
 function Item({ item,cat }) {
-    const [temp, settemp] = useState(5)
+    const [temp, settemp] = useState(5);
     const navigate = useNavigate();
     return (
         <>
