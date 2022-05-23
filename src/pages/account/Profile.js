@@ -1,4 +1,4 @@
-import {React,useContext,useEffect} from 'react'
+import { React, useContext, useEffect, useState } from 'react'
 import Bottom from '../../components/Bottom/Bottom'
 import Footer from '../../components/footer/Footer'
 import Navbar from '../../components/navbar/Navbar'
@@ -8,12 +8,39 @@ import KeyIcon from '@mui/icons-material/Key';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Link } from 'react-router-dom';
 import EcartContext from '../../context/CartContext'
+import Skeleton  from '../../components/Skeleton/Skeleton';
+import axios from 'axios';
+
+const host = "http://localhost:5000/api/";
 
 function Profile() {
     const { scrolltoTopfun } = useContext(EcartContext);
+    const [currentuser, setcurrentuser] = useState({});
+
+    // for fetch current user
+    const fetchcurrentuserfun = async () => {
+        if (window.localStorage.getItem('ecomuserid')) {
+            try {
+                const id = window.localStorage.getItem('ecomuserid');
+                const response = await axios.get(host + `auth/getuser/${id}`);
+                const user = response.data.user;
+                setcurrentuser({
+                    'username': user.username,
+                    'email': user.email,
+                    'gender': user.gender,
+                    'mobile': user.mobile,
+                });
+            } catch (error) {
+                console.log("Inside fetchuserfun", error);
+            }
+        }
+    }
+
     useEffect(() => {
         scrolltoTopfun();
-    }, [])
+        fetchcurrentuserfun();
+    }, []);
+
     const logoutfun = () => {
         window.localStorage.removeItem("ecomuserid");
     }
@@ -23,24 +50,26 @@ function Profile() {
             <Navbar />
             <div className="profilepage">
                 <div className="profile">
-                    <div className="profilePic mb-3">
-                        <img src="/images/img5.jpg" />
-                    </div>
-                    <div className="profiledesc">
-                        <span className='fw-bold'>Name : </span><span> Alok Kumar Rai</span>
-                        <br />
-                        <hr className='hr' />
-                        <span className='fw-bold'>Phone : </span><span> 91+ 2222321015</span>
-                        <br />
-                        <hr className='hr' />
-                        <span className='fw-bold'>Email : </span><span> alok@dddddgmail.com</span>
-                        <br />
-                        <hr className='hr' />
-                        <span className='fw-bold'>Gender : </span><span> Male</span>
-                        <br />
-                        <hr className='hr' />
-                    </div>
-                    <Link to={'/updateprofile'} style={{ width: '100%' }}><button className='orderBtn'>Edit Profile</button></Link>
+                    {currentuser == "" ? <Skeleton /> : <>
+                        <div className="profilePic mb-3">
+                            <img src="/images/img5.jpg" />
+                        </div>
+                        <div className="profiledesc">
+                            <span className='fw-bold'>Name : </span><span> {currentuser.username}</span>
+                            <br />
+                            <hr className='hr' />
+                            <span className='fw-bold'>Phone : </span><span> 91+ {currentuser.mobile}</span>
+                            <br />
+                            <hr className='hr' />
+                            <span className='fw-bold'>Email : </span><span> {currentuser.email}</span>
+                            <br />
+                            <hr className='hr' />
+                            <span className='fw-bold'>Gender : </span><span> {currentuser.gender}</span>
+                            <br />
+                            <hr className='hr' />
+                        </div>
+                        <Link to={'/updateprofile'} style={{ width: '100%' }}><button className='orderBtn'>Edit Profile</button></Link>
+                    </>}
                 </div>
                 <div className="profilebuttom">
                     <Link className='settingLink' to={'/myorder'} style={{ 'textDecoration': 'none', color: 'black' }}><div className="setting">

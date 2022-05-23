@@ -8,19 +8,27 @@ const host = "http://localhost:5000/api/";
 const CartStateContext = (props) => {
     const navigate = useNavigate();
 
-    // user 
-    const [user, setuser] = useState({});
-
-    const [isfetching, setisfetching] = useState(0);
-    const [iserror, setiserror] = useState(0);
+    // currentuser 
+    const [currentuser, setcurrentuser] = useState({
+        'username':'',
+        'mobile':'',
+        'gender':'',
+        'email':''
+    });
 
     // for fetch current user
-    const fetchcurrentuserfun = async (uid) => {
-        if (window.localStorage.getItem('currentUID')) {
+    const fetchcurrentuserfun = async () => {
+        if (window.localStorage.getItem('ecomuserid')) {
             try {
-                const id = window.localStorage.getItem('ecartuserid');
-                const response = await axios.get(host+`/users?userId=${id}`);
-                setuser(response.data);
+                const id = window.localStorage.getItem('ecomuserid');
+                const response = await axios.get(host+`auth/getuser/${id}`);
+                const user = response.data.user;
+                setcurrentuser({
+                    'username': user.username,
+                    'email': user.email,
+                    'gender': user.gender,
+                    'mobile': user.mobile,
+                });
             } catch (error) {
                 console.log("Inside fetchuserfun", error);
             }
@@ -34,7 +42,7 @@ const CartStateContext = (props) => {
     }
 
     return (
-        <EcartContext.Provider value={{scrolltoTopfun}}>
+        <EcartContext.Provider value={{scrolltoTopfun,fetchcurrentuserfun, currentuser}}>
             {props.children}
         </EcartContext.Provider>
     )

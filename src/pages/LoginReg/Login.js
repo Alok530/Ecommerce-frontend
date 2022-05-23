@@ -24,16 +24,13 @@ function Login() {
     const [password, setpassword] = useState("");
 
     const loginfun = async (event) => {
-        console.log('enter for login')
         event.preventDefault();
         try {
             const response = await axios.post(host + 'auth/login', { email, password });
             if (response.data.success == true) {
                 window.localStorage.setItem('ecomuserid', response.data.user._id);
-                console.log(response.data.user);
                 navigate('/');
             } else {
-                console.log(response.data.message);
                 showTost(response.data.message);
                 setemail("");
                 setpassword("");

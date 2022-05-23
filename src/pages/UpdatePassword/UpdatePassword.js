@@ -29,9 +29,7 @@ function UpdatePassword() {
 
     const changepassword = async (event) =>{
         event.preventDefault();
-        console.log("enter for change password");
         try {
-            console.log("enter for change password2",newpassword,conformpassword);
             if(newpassword!==conformpassword)
             {
                 setresponseStatus(0);
@@ -43,9 +41,9 @@ function UpdatePassword() {
             let currentuserId = window.localStorage.getItem('ecomuserid');
             const response = await axios.put(host+`auth/updatepassword/${currentuserId}`,{oldpassword,newpassword});
             if(response.data.success){
-                setoldpassword("");setnewpassword("");setconformpassword("");
                 setresponseStatus(1);
                 showTost(response.data.message);
+                setoldpassword("");setnewpassword("");setconformpassword("");
                 setTimeout(() => {
                     navigate('/account');                    
                 }, 2000);
@@ -57,7 +55,7 @@ function UpdatePassword() {
                 setconformpassword("");
             }
         } catch (error) {
-            console.log("error inside changepassword fun");
+            console.log("error inside changepassword fun",error);
         }
     }
 

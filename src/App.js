@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Product from './components/product/Product'
+import Skeleton from './components/Skeleton/Skeleton'
 import Addtocart from './pages/AddToCart/Addtocart'
 import Home from './pages/home/Home'
 import Order from './pages/Order/Order'
@@ -33,6 +33,7 @@ function App() {
         <Route path="/account" element={<Profile />} />
         <Route path="/updatepassword" element={<UpdatePassword />} />
         <Route path="/updateprofile" element={<UpdateProfile />} />
+        <Route path="/skc" element={<Skeleton />} />
       </Routes>
     </>
   )
