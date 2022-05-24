@@ -10,10 +10,10 @@ const CartStateContext = (props) => {
 
     // currentuser 
     const [currentuser, setcurrentuser] = useState({
-        'username':'',
-        'mobile':'',
-        'gender':'',
-        'email':''
+        'username': '',
+        'mobile': '',
+        'gender': '',
+        'email': ''
     });
 
     // for fetch current user
@@ -21,7 +21,7 @@ const CartStateContext = (props) => {
         if (window.localStorage.getItem('ecomuserid')) {
             try {
                 const id = window.localStorage.getItem('ecomuserid');
-                const response = await axios.get(host+`auth/getuser/${id}`);
+                const response = await axios.get(host + `auth/getuser/${id}`);
                 const user = response.data.user;
                 setcurrentuser({
                     'username': user.username,
@@ -41,8 +41,19 @@ const CartStateContext = (props) => {
         document.documentElement.scrollTop = 0;
     }
 
+    // for calculate cart items 
+    const [cartQuantity, setcartQuantity] = useState(0);
+    // function for set cart quantity
+    const fetchCurrentUserCartLength = async () => {
+        if (window.localStorage.getItem('ecomuserid')) {
+            const id = window.localStorage.getItem('ecomuserid');
+            const response = await axios.get(host + 'cart/fetchcart/' + id);
+            setcartQuantity(response.data.length);
+        }
+    }
+
     return (
-        <EcartContext.Provider value={{scrolltoTopfun,fetchcurrentuserfun, currentuser}}>
+        <EcartContext.Provider value={{ scrolltoTopfun, fetchcurrentuserfun, fetchCurrentUserCartLength,currentuser, cartQuantity, setcartQuantity }}>
             {props.children}
         </EcartContext.Provider>
     )

@@ -35,25 +35,7 @@
     text-align: center;
     margin-right: 20px;
 }
-.EmptyCartDiv{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15vh;
-    margin-bottom: 15vh;
-    /* border: 1px solid red; */
-    padding-top: 12px;
-    padding-bottom: 12px;
-}
-.EmptyCartDivBtn{
-    color: white;
-    background-color: orangered;
-    border: none;
-    border-radius: 5px;
-    padding: 3px 15px;
-    font-weight: bold;
-}
+
 
 /* -------------------**********----------------- */
 
@@ -88,8 +70,12 @@
     padding-bottom: 5px;
 }
 
-.quantitytIcon{
-    font-size: 53px;
+
+
+
+/* ------------- */
+.DisplayNone{
+    display: none;
 }
 
 @media (max-width:1000px){

@@ -7,31 +7,88 @@ import products from '../../products';
 import { useParams } from "react-router";
 import { useEffect, useState } from 'react';
 import StarRatings from 'react-star-ratings';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+const host = "http://localhost:5000/api/";
 
 function ProductDetails() {
+    const navigate = useNavigate();
     const productID = useParams().id;
-    const [productIndex, setproductIndex] = useState(-1);
     const [product, setproduct] = useState({});
 
     const findIndex = () => {
         for (let i = 0; i < products.length; i++) {
             if (products[i].id == productID) {
-                console.log(products[i]);
                 setproduct(products[i]);
             }
         }
     }
 
     useEffect(() => {
-        console.log("jai mata di", productID);
         findIndex();
     }, [])
 
+    const [isExist, setisExist] = useState(0);
+    const checkProduct = async () => {
+        try {
+            const userId = window.localStorage.getItem('ecomuserid');
+            const productId = productID;
+            const response = await axios.post(host + 'cart/checkcart', { userId, productId });
+            console.log("hello",response.data);
+            if (response.data.isExist) {
+                setisExist(1);
+            } else {
+                setisExist(0);
+            }
+        } catch (error) {
+            console.log("error inside checkProduct", error);
+        }
+    }
+    useEffect(() => {
+        checkProduct();
+    }, []);
 
-    const showTost = () => {
-        toast.success('Item added to cart', {
+    const buynowfun = async () => {
+        if (!window.localStorage.getItem('ecomuserid')) {
+            showTost("You are not login");
+            setTimeout(() => {
+                navigate('/login');
+            }, 2000);
+        } else {
+            navigate('/cart');
+        }
+    }
+    const addtocartfun = async () => {
+        try {
+            const userId = window.localStorage.getItem('ecomuserid');
+            if (!userId) {
+                showTost("You are not login");
+                setTimeout(() => {
+                    navigate('/login');
+                }, 2000);
+            }
+            const productId = productID;
+            const quantity = 5;
+            const response = await axios.post(host + 'cart/addtocart', { userId, productId, quantity });
+            console.log(response.data);
+            if (response.data.success) {
+                showTost(response.data.message);
+                setTimeout(() => {
+                    navigate('/cart');
+                }, 2000);
+            } else {
+                showTost(response.data.message);
+            }
+        } catch (error) {
+            console.log("add to cart error", error);
+        }
+    }
+
+    const showTost = (message) => {
+        toast.success(message, {
             position: "bottom-center",
-            autoClose: 5000,
+            autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: false,
@@ -40,6 +97,7 @@ function ProductDetails() {
             theme: 'colored',
         });
     }
+
     return (
         <>
 
@@ -52,7 +110,7 @@ function ProductDetails() {
             <div className="col-md-6 temp">
                 <span style={{ opacity: '0.7' }}>FashionCart</span>
                 <h4 className='mb-0'>{product.tittle}</h4>
-                <div style={{ 'display': 'flex','padding': '0px' }}>
+                <div style={{ 'display': 'flex', 'padding': '0px' }}>
                     <div><StarRatings
                         rating={product.ratting}
                         starRatedColor="rgb(255, 63, 127)"
@@ -62,7 +120,7 @@ function ProductDetails() {
                         starSpacing="0"
                     />
                     </div>
-                    <span style={{'paddingTop':'4px','marginLeft':'10px'}}>4 Reviews</span>
+                    <span style={{ 'paddingTop': '4px', 'marginLeft': '10px' }}>4 Reviews</span>
                 </div>
                 <span className='mt-2'>Eveniet similique quos, saepe quasi dignissimos a incidunt optio velit sed. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt iste dolorem earum eius iusto natus repellat sed hic obcaecati repellendus, saepe nisi nobis.</span>
                 <div className='d-flex align-items-center mt-2'>
@@ -92,8 +150,9 @@ function ProductDetails() {
                 <hr />
                 <div className='d-flex align-items-center'>
                     <h4 className='me-4' style={{ 'fontWeight': '700' }}>₹599</h4>
-                    <Link to={'/cart'}><button className='me-3 BOTTON'>Buy Now</button></Link>
-                    <button className='BOTTON' onClick={showTost}>Add to Cart</button>
+                    <button onClick={() => { buynowfun() }} className='me-3 BOTTON'>Buy Now</button>
+                    {isExist == 0 ? <button className='BOTTON' onClick={() => { addtocartfun() }}>Add to Cart</button>
+                        : <button className='BOTTON' onClick={() => { navigate('/cart') }}>Go to Cart</button>}
                 </div>
                 {/*<div className='mt-4'>
                     <span className='BOTTON' style={{'borderRadius':'18px',backgroundColor:'orangered'}}>Submit Review</span>
