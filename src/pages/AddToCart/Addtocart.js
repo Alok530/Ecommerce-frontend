@@ -14,23 +14,34 @@ import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 const host = "http://localhost:5000/api/";
 
 function Addtocart() {
-    const { scrolltoTopfun, setcartQuantity, cartQuantity } = useContext(EcartContext);
+    const { scrolltoTopfun, setcartQuantity, cartQuantity, subtotal,setsubtotal } = useContext(EcartContext);
     useEffect(() => {
         scrolltoTopfun();
     }, [])
-    const [quantity, setquantity] = useState(1)
+    const [quantity, setquantity] = useState(1);
     const [cartproducts, setcartproducts] = useState([]);
 
     const fetchusercart = async () => {
         try {
             const id = window.localStorage.getItem('ecomuserid');
             const response = await axios.get(host + 'cart/fetchcart/' + id);
+            if(response.data.length==0)
+            {
+                setsubtotal(0);
+            }
+            let temp=0;
+            for(let i=0;i<response.data.length;i++)
+            {
+                temp=temp+response.data[i].price;
+            }
+            setsubtotal(temp);
             setcartproducts(response.data);
             setcartQuantity(response.data.length);
         } catch (error) {
             console.log("error inside add to cart", error);
         }
     }
+
     useEffect(() => {
         fetchusercart();
     }, [])
@@ -45,7 +56,7 @@ function Addtocart() {
                         <div className="cartProducts">
                             {
                                 cartproducts.map((item) => {
-                                    return <CartItem key={item.productId} id={item.productId} quantity={item.quantity} />
+                                    return <CartItem key={item.productId} id={item.productId} quantity={item.quantity} price={item.price}/>
                                 })
                             }
                         </div>
@@ -54,27 +65,27 @@ function Addtocart() {
                             <div className="orderSummaryPrice">
                                 <div className="orderPrice">
                                     <p>Subtotal</p>
-                                    <p>$ 80.0</p>
+                                    <p>₹ {subtotal}</p>
                                 </div>
                                 <hr style={{ margin: '0px' }} />
                                 <div className="orderPrice">
                                     <p>Shipping Charge</p>
-                                    <p>$ 80.0</p>
+                                    <p>₹ {40*cartQuantity}</p>
                                 </div>
                                 <hr style={{ margin: '0px' }} />
                                 <div className="orderPrice">
                                     <p>GST</p>
-                                    <p>$ 80.0</p>
+                                    <p>₹ {Math.floor(subtotal/20)}</p>
                                 </div>
                                 <hr style={{ margin: '0px' }} />
                                 <div className="orderPrice">
                                     <p>Discount</p>
-                                    <p>$ 80.0</p>
+                                    <p>₹ {(Math.floor(subtotal/10))}</p>
                                 </div>
                                 <hr style={{ margin: '0px' }} />
                                 <div className="orderPrice">
                                     <h4>Total</h4>
-                                    <h5>$ 180.0</h5>
+                                    <h5>₹ {Math.floor((subtotal+(subtotal/20)+(cartQuantity*40))-(subtotal/10))}</h5>
                                 </div>
                                 <Link to={'/shippingaddress'}><button className='orderBtn'>Place Order</button></Link>
                             </div>
@@ -92,4 +103,4 @@ function Addtocart() {
     )
 }
 
-export default Addtocart
+export default Addtocart;

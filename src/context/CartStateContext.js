@@ -52,8 +52,11 @@ const CartStateContext = (props) => {
         }
     }
 
+    // for total price of cart
+    const [subtotal, setsubtotal] = useState(0);
+
     return (
-        <EcartContext.Provider value={{ scrolltoTopfun, fetchcurrentuserfun, fetchCurrentUserCartLength,currentuser, cartQuantity, setcartQuantity }}>
+        <EcartContext.Provider value={{ scrolltoTopfun, fetchcurrentuserfun, fetchCurrentUserCartLength,currentuser, cartQuantity, setcartQuantity,subtotal,setsubtotal }}>
             {props.children}
         </EcartContext.Provider>
     )

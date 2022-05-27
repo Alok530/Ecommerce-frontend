@@ -69,10 +69,12 @@ function ProductDetails() {
                 }, 2000);
             }
             const productId = productID;
-            const quantity = 5;
-            const response = await axios.post(host + 'cart/addtocart', { userId, productId, quantity });
+            const quantity = 1;
+            const price = product.price;
+            const response = await axios.post(host + 'cart/addtocart', { userId, productId, quantity, price});
             console.log(response.data);
             if (response.data.success) {
+                setisExist(1);
                 showTost(response.data.message);
                 setTimeout(() => {
                     navigate('/cart');
@@ -149,7 +151,7 @@ function ProductDetails() {
                 </div>
                 <hr />
                 <div className='d-flex align-items-center'>
-                    <h4 className='me-4' style={{ 'fontWeight': '700' }}>₹599</h4>
+                    <h4 className='me-4' style={{ 'fontWeight': '700' }}>₹{product.price}</h4>
                     <button onClick={() => { buynowfun() }} className='me-3 BOTTON'>Buy Now</button>
                     {isExist == 0 ? <button className='BOTTON' onClick={() => { addtocartfun() }}>Add to Cart</button>
                         : <button className='BOTTON' onClick={() => { navigate('/cart') }}>Go to Cart</button>}

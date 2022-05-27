@@ -11,8 +11,8 @@ import EcartContext from '../../context/CartContext';
 
 const host = "http://localhost:5000/api/";
 
-function CartItem({ id, quantity }) {
-    const {setcartQuantity,cartQuantity} = useContext(EcartContext);
+function CartItem({ id, quantity, price}) {
+    const {setcartQuantity,cartQuantity,subtotal,setsubtotal} = useContext(EcartContext);
 
     const [Quantity, setQuantity] = useState(quantity);
     const productID = id;
@@ -31,11 +31,11 @@ function CartItem({ id, quantity }) {
     const removefun = async () => {
         try {
             const userid = window.localStorage.getItem('ecomuserid');
-            const response = await axios.post(host+'cart/removecartitem',{"productId":productID,"userId":userid});
-            console.log(response.data);
+            const response = await axios.post(host+'cart/removecartitem',{"productId":productID,"userId":userid})
             if(response.data.success){
                 setcartQuantity(cartQuantity-1);
                 setDisplayNone("DisplayNone");
+                setsubtotal(subtotal-price);
                 showTost(response.data.message);
             }else{
                 showTost(response.data.message);
@@ -45,8 +45,21 @@ function CartItem({ id, quantity }) {
         }
     }
 
+    const decreaseQuantity=()=>{
+        if(Quantity==1){
+            showTost("Quantity Can't be zero");
+            return;
+        }
+        setsubtotal(subtotal-price);
+        setQuantity(Quantity - 1);
+    }
+
+    const increaseQuantity=()=>{
+        setsubtotal(subtotal+price);
+        setQuantity(Quantity + 1);
+    }
+
     useEffect(() => {
-        console.log("jai mata di", id);
         findIndex();
     }, [])
 
@@ -82,9 +95,9 @@ function CartItem({ id, quantity }) {
                     </div>
                     <div className='cartItemqueantity'>
                         <span className='ms-1 me-2'>Qty</span>
-                        <RemoveCircleOutlineIcon className='quantitytIcon' onClick={() => { setQuantity(Quantity - 1) }} />
+                        <RemoveCircleOutlineIcon className='quantitytIcon' onClick={() => { decreaseQuantity() }} />
                         <span className=''>  {Quantity}  </span>
-                        <AddCircleOutlineTwoToneIcon className='quantitytIcon' onClick={() => { setQuantity(Quantity + 1) }} />
+                        <AddCircleOutlineTwoToneIcon className='quantitytIcon' onClick={() => { increaseQuantity()  }} />
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import {React,useContext,useEffect} from 'react'
+import {React,useContext,useEffect,useState} from 'react'
 import Bottom from '../../components/Bottom/Bottom'
 import Footer from '../../components/footer/Footer'
 import Navbar from '../../components/navbar/Navbar'
@@ -12,12 +12,59 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import { Link } from 'react-router-dom';
 import EcartContext from '../../context/CartContext'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+const host = "http://localhost:5000/api/";
 
 function ShippingAddress() {
+    const navigate = useNavigate();
     const { scrolltoTopfun } = useContext(EcartContext);
+
+    const [name, setname] = useState("");
+    const [address, setaddress] = useState("");
+    const [pincode, setpincode] = useState("");
+    const [mobile, setmobile] = useState("");
+
+    // function for save address
+    const onsubmitfun=async(event)=>{
+        event.preventDefault();
+        try {
+            const userId = window.localStorage.getItem('ecomuserid');
+            const response = await axios.post(host+'order/saveaddress',{name,address,pincode,mobile,userId});
+            console.log(response.data);
+            if(response.data.success){
+                navigate('/shippingdetails');
+            }
+        } catch (error) {
+            console.log("error inside shipping address",error);
+        }
+    }
+
+    // function for fetch address
+    const fetchaddress =async()=>{
+        try {
+            const id = window.localStorage.getItem('ecomuserid');
+            // const response = await axios.get('order/fetchaddress/'+id);
+            console.log("id is",id);
+            const response = await axios.get(host+'order/fetchaddress/'+id);
+            if(response.data.success){
+                const detail = response.data.address;
+                setname(detail.name);
+                setaddress(detail.address);
+                setpincode(detail.pincode);
+                setmobile(detail.mobile);
+            }
+        } catch (error) {
+            console.log("inside fetchaddress",error);
+        }
+    }
+
     useEffect(() => {
+        fetchaddress();
         scrolltoTopfun();
-    }, [])
+    }, []);
+     
     return (
         <>
             <Navbar />
@@ -43,13 +90,13 @@ function ShippingAddress() {
             <div className="paymentpage">
                 <div className="cardinfo mt-0">
                     <h2 className='text-center mb-4'>Shipping Details</h2>
-                    <div>
-                        <div className="cardInput"><PersonIcon className='me-2' /><input type="text" placeholder='Name' /></div>
-                        <div className="cardInput"><HomeIcon className='me-2' /><input type="text" placeholder='Address' /></div>
-                        <div className="cardInput"><PinDropIcon className='me-2' /><input type="text" placeholder='Pin Code' /></div>
-                        <div className="cardInput"><PhoneIcon className='me-2' /><input type="text" placeholder='Mobile Number' /></div>
-                        <Link to={'/shippingdetails'}><button className='orderBtn mt-0'>Continue</button></Link>
-                    </div>
+                    <form onSubmit={onsubmitfun}>
+                        <div className="cardInput"><PersonIcon className='me-2' /><input required minLength={3} maxLength={20} value={name} onChange={(e)=>{setname(e.target.value)}} type="text" placeholder='Name' /></div>
+                        <div className="cardInput"><HomeIcon className='me-2' /><input required minLength={5}  value={address} onChange={(e)=>{setaddress(e.target.value)}} type="text" placeholder='Address' /></div>
+                        <div className="cardInput"><PinDropIcon className='me-2' /><input required minLength={6} maxLength={6} value={pincode} onChange={(e)=>{setpincode(e.target.value)}} type="text" placeholder='Pin Code' /></div>
+                        <div className="cardInput"><PhoneIcon className='me-2' /><input required minLength={10} maxLength={10} pattern="[0-9]{10}" value={mobile} onChange={(e)=>{setmobile(e.target.value)}} type="tel" placeholder='Mobile Number' /></div>
+                        <button type='submit' className='orderBtn mt-0'>Continue</button>
+                    </form>
                 </div>
             </div>
             <Footer />

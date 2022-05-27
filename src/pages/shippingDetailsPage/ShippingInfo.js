@@ -1,4 +1,4 @@
-import {React,useContext,useEffect} from 'react'
+import { React, useContext, useEffect, useState } from 'react'
 import Bottom from '../../components/Bottom/Bottom'
 import Navbar from '../../components/navbar/Navbar'
 import './addtocart.css'
@@ -6,11 +6,40 @@ import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import { Link } from 'react-router-dom';
-import EcartContext from '../../context/CartContext'
+import EcartContext from '../../context/CartContext';
+import axios from 'axios';
+
+const host = "http://localhost:5000/api/";
 
 function ShippingInfo() {
-    const { scrolltoTopfun } = useContext(EcartContext);
+    const {scrolltoTopfun,subtotal,cartQuantity} = useContext(EcartContext);
+
+    const [name, setname] = useState("");
+    const [address, setaddress] = useState("");
+    const [pincode, setpincode] = useState("");
+    const [mobile, setmobile] = useState("");
+
+    // function for fetch address
+    const fetchaddress = async () => {
+        try {
+            const id = window.localStorage.getItem('ecomuserid');
+            // const response = await axios.get('order/fetchaddress/'+id);
+            console.log("id is", id);
+            const response = await axios.get(host + 'order/fetchaddress/' + id);
+            if (response.data.success) {
+                const detail = response.data.address;
+                setname(detail.name);
+                setaddress(detail.address);
+                setpincode(detail.pincode);
+                setmobile(detail.mobile);
+            }
+        } catch (error) {
+            console.log("inside fetchaddress", error);
+        }
+    }
+
     useEffect(() => {
+        fetchaddress();
         scrolltoTopfun();
     }, [])
     return (
@@ -38,15 +67,15 @@ function ShippingInfo() {
                 <div className="cart">
                     <div className="orderAddress">
                         <div className="shippingInfo">
-                            <h2>Shipping Info</h2>
+                            <h2 className='fw-bold'>Shipping Info</h2>
                             <div className="address mt-3">
-                                <span>Name : </span><span>Alok Kumar Rai</span>
+                                <span className='fw-bold'>Name : </span><span>{name}</span>
                                 <br />
-                                <span>Phone : </span><span>91+ 7321015099</span>
+                                <span className='fw-bold'>Phone : </span><span>91+ {mobile}</span>
                                 <br />
-                                <span>PIN Code : </span><span>841417</span>
+                                <span className='fw-bold'>PIN Code : </span><span>{pincode}</span>
                                 <br />
-                                <span>Address : </span><span>HN-10, Aazad nagar, Chhapra (Saran)</span>
+                                <span className='fw-bold'>Address : </span><span>{address}</span>
                             </div>
                         </div>
                     </div>
@@ -55,27 +84,27 @@ function ShippingInfo() {
                         <div className="orderSummaryPrice">
                             <div className="orderPrice">
                                 <p>Subtotal</p>
-                                <p>$ 80.0</p>
+                                <p>₹ {Math.floor(subtotal)}</p>
                             </div>
                             <hr style={{ margin: '0px' }} />
                             <div className="orderPrice">
                                 <p>Shipping Charge</p>
-                                <p>$ 80.0</p>
+                                <p>₹ {Math.floor(cartQuantity*40)}</p>
                             </div>
                             <hr style={{ margin: '0px' }} />
                             <div className="orderPrice">
                                 <p>GST</p>
-                                <p>$ 80.0</p>
+                                <p>₹ {Math.floor(subtotal/20)}</p>
                             </div>
                             <hr style={{ margin: '0px' }} />
                             <div className="orderPrice">
                                 <p>Discount</p>
-                                <p>$ 80.0</p>
+                                <p>₹ {Math.floor(subtotal/10)}</p>
                             </div>
                             <hr style={{ margin: '0px' }} />
                             <div className="orderPrice">
                                 <h4>Total</h4>
-                                <h5>$ 180.0</h5>
+                                <h5>₹ {Math.floor((subtotal+(subtotal/20)+(cartQuantity*40))-(subtotal/10))}</h5>
                             </div>
                             <Link to={'/payment'}><button className='orderBtn'>PAY NOW</button></Link>
                         </div>
