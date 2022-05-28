@@ -15,6 +15,7 @@ import Login from './pages/LoginReg/Login'
 import Register from './pages/LoginReg/Register'
 import Tostify from './components/Tostify/Tostify'
 import AllproductsPage from './pages/AllProducts/AllproductsPage'
+import Errorpage from './components/404page/Errorpage'
 
 function App() {
   return (
@@ -27,13 +28,15 @@ function App() {
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/cart" element={<Addtocart />} />
         <Route path="/shippingaddress" element={<ShippingAddress />} />
-        <Route path="/shippingdetails" element={<ShippingInfo />} />
+        <Route path="/shippingdetails/:addressId" element={<ShippingInfo />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/order" element={<Order />} />
         <Route path="/account" element={<Profile />} />
         <Route path="/updatepassword" element={<UpdatePassword />} />
         <Route path="/updateprofile" element={<UpdateProfile />} />
         <Route path="/skc" element={<Skeleton />} />
+        <Route path="/error" element={<Errorpage/>} />
+        <Route path="*" element={<Errorpage/>} />
       </Routes>
     </>
   )

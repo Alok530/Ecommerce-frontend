@@ -1,19 +1,21 @@
-import { React, useContext, useEffect, useState } from 'react'
-import Bottom from '../../components/Bottom/Bottom'
-import Footer from '../../components/footer/Footer'
-import Navbar from '../../components/navbar/Navbar'
+import { React, useContext, useEffect, useState } from 'react';
+import Bottom from '../../components/Bottom/Bottom';
+import Footer from '../../components/footer/Footer';
+import Navbar from '../../components/navbar/Navbar';
 import './profile.css'
 import ShopIcon from '@mui/icons-material/Shop';
 import KeyIcon from '@mui/icons-material/Key';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Link } from 'react-router-dom';
-import EcartContext from '../../context/CartContext'
+import EcartContext from '../../context/CartContext';
 import Skeleton  from '../../components/Skeleton/Skeleton';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
 
 const host = "http://localhost:5000/api/";
 
 function Profile() {
+    const navigate = useNavigate();
     const { scrolltoTopfun } = useContext(EcartContext);
     const [currentuser, setcurrentuser] = useState({});
 
@@ -23,6 +25,9 @@ function Profile() {
             try {
                 const id = window.localStorage.getItem('ecomuserid');
                 const response = await axios.get(host + `auth/getuser/${id}`);
+                if(!response.data.success){
+                    navigate('/error');
+                }
                 const user = response.data.user;
                 setcurrentuser({
                     'username': user.username,

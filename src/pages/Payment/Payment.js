@@ -13,6 +13,9 @@ import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import { Link, Navigate } from 'react-router-dom';
 import EcartContext from '../../context/CartContext';
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
+
+const host = "http://localhost:5000/api/";
 
 function Payment() {
     const navigate = useNavigate();
@@ -21,6 +24,16 @@ function Payment() {
     useEffect(() => {
         scrolltoTopfun();
     }, [])
+
+    const buyNowfun = async () => {
+        try {
+            const userId = window.localStorage.getItem('ecomuserId');
+            const response = await axios.post(host + '/palcedorder/' + userId, { userId });
+        } catch (error) {
+            console.log("error inside buynowfun", error);
+        }
+    }
+
     return (
         <>
             <Navbar />
@@ -46,7 +59,7 @@ function Payment() {
             <div className="paymentpage">
                 <h2>Payment</h2>
                 <div className="mb-4 paymentOption">
-                    <button className='me-1' onClick={() => {navigate('/order')}}>Cash on Dileviry</button>
+                    <button className='me-1' onClick={() => { navigate('/order') }}>Cash on Dileviry</button>
                     <button className='ms-1' onClick={() => { setoption(1) }}>Pay Now</button>
                 </div>
                 {option == 1 ? <div className="cardinfo">

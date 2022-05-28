@@ -10,14 +10,19 @@ import axios from 'axios'
 import CartItem from '../../components/cartItem/CartItem'
 import products from '../../products';
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
+import { useNavigate } from 'react-router-dom';
+import NoAccountsIcon from '@mui/icons-material/NoAccounts';
 
 const host = "http://localhost:5000/api/";
 
 function Addtocart() {
-    const { scrolltoTopfun, setcartQuantity, cartQuantity, subtotal,setsubtotal } = useContext(EcartContext);
+    const { scrolltoTopfun, setcartQuantity, cartQuantity, subtotal, setsubtotal } = useContext(EcartContext);
+
+    const navigate = useNavigate();
     useEffect(() => {
         scrolltoTopfun();
     }, [])
+
     const [quantity, setquantity] = useState(1);
     const [cartproducts, setcartproducts] = useState([]);
 
@@ -25,14 +30,12 @@ function Addtocart() {
         try {
             const id = window.localStorage.getItem('ecomuserid');
             const response = await axios.get(host + 'cart/fetchcart/' + id);
-            if(response.data.length==0)
-            {
+            if (response.data.length == 0) {
                 setsubtotal(0);
             }
-            let temp=0;
-            for(let i=0;i<response.data.length;i++)
-            {
-                temp=temp+response.data[i].price;
+            let temp = 0;
+            for (let i = 0; i < response.data.length; i++) {
+                temp = temp + response.data[i].price;
             }
             setsubtotal(temp);
             setcartproducts(response.data);
@@ -43,7 +46,9 @@ function Addtocart() {
     }
 
     useEffect(() => {
-        fetchusercart();
+        if (window.localStorage.getItem('ecomuserid')) {
+            fetchusercart();
+        }
     }, [])
 
     return (
@@ -56,7 +61,7 @@ function Addtocart() {
                         <div className="cartProducts">
                             {
                                 cartproducts.map((item) => {
-                                    return <CartItem key={item.productId} id={item.productId} quantity={item.quantity} price={item.price}/>
+                                    return <CartItem key={item.productId} id={item.productId} quantity={item.quantity} price={item.price} />
                                 })
                             }
                         </div>
@@ -70,32 +75,38 @@ function Addtocart() {
                                 <hr style={{ margin: '0px' }} />
                                 <div className="orderPrice">
                                     <p>Shipping Charge</p>
-                                    <p>₹ {40*cartQuantity}</p>
+                                    <p>₹ {40 * cartQuantity}</p>
                                 </div>
                                 <hr style={{ margin: '0px' }} />
                                 <div className="orderPrice">
                                     <p>GST</p>
-                                    <p>₹ {Math.floor(subtotal/20)}</p>
+                                    <p>₹ {Math.floor(subtotal / 20)}</p>
                                 </div>
                                 <hr style={{ margin: '0px' }} />
                                 <div className="orderPrice">
                                     <p>Discount</p>
-                                    <p>₹ {(Math.floor(subtotal/10))}</p>
+                                    <p>₹ {(Math.floor(subtotal / 10))}</p>
                                 </div>
                                 <hr style={{ margin: '0px' }} />
                                 <div className="orderPrice">
                                     <h4>Total</h4>
-                                    <h5>₹ {Math.floor((subtotal+(subtotal/20)+(cartQuantity*40))-(subtotal/10))}</h5>
+                                    <h5>₹ {Math.floor((subtotal + (subtotal / 20) + (cartQuantity * 40)) - (subtotal / 10))}</h5>
                                 </div>
                                 <Link to={'/shippingaddress'}><button className='orderBtn'>Place Order</button></Link>
                             </div>
                         </div>
                     </div>
                 </> : <div className="EmptyCartDiv text-center">
-                    <RemoveShoppingCartIcon style={{ 'fontSize': '50px', color: 'orangered' }} />
-                    <h2 id='temp' className='fw-bold'>Your Cart is Empty</h2>
-                    <Link to={'/products'}><button className='EmptyCartDivBtn mt-0'>Shop Now</button></Link>
+                {window.localStorage.getItem('ecomuserid')?<div>
+                <RemoveShoppingCartIcon style={{ 'fontSize': '50px', color: 'orangered' }} />
+                <h2 id='temp' className='fw-bold'>Your Cart is Empty</h2>
+                <Link to={'/products'}><button className='EmptyCartDivBtn mt-0'>Shop Now</button></Link>
+                </div>:<div>
+                <NoAccountsIcon style={{ 'fontSize': '50px', color: 'black' }} />
+                <h2 id='temp' className='fw-bold'>You are not login</h2>
+                <Link to={'/login'}><button className='EmptyCartDivBtn mt-0'>Login Now</button></Link>
                 </div>}
+            </div>}
             </div>
             <Footer />
             <Bottom />

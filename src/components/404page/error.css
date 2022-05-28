@@ -1,0 +1,17 @@
+.errorpage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: gainsboro;
+}
+.error{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid grey;
+    padding: 8px 12px;
+    border-radius: 5px;
+}

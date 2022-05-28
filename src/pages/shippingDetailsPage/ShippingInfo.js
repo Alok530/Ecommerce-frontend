@@ -8,11 +8,28 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import { Link } from 'react-router-dom';
 import EcartContext from '../../context/CartContext';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const host = "http://localhost:5000/api/";
 
 function ShippingInfo() {
-    const {scrolltoTopfun,subtotal,cartQuantity} = useContext(EcartContext);
+    const addressId = useParams().addressId;
+
+    const navigate = useNavigate();
+    const { scrolltoTopfun, subtotal, cartQuantity } = useContext(EcartContext);
+
+    useEffect(() => {
+        console.log("id si--",addressId);
+        if (!window.localStorage.getItem('ecomuserid')) {
+            navigate('/login');
+        }
+        if(!addressId){
+            navigate('/error');
+        }
+    }, [])
 
     const [name, setname] = useState("");
     const [address, setaddress] = useState("");
@@ -23,18 +40,24 @@ function ShippingInfo() {
     const fetchaddress = async () => {
         try {
             const id = window.localStorage.getItem('ecomuserid');
-            // const response = await axios.get('order/fetchaddress/'+id);
-            console.log("id is", id);
-            const response = await axios.get(host + 'order/fetchaddress/' + id);
+            if (!id) {
+                navigate('/login');
+            }
+            const response = await axios.post(host + 'order/fetchaddress/' + 0, { "addressId": addressId });
             if (response.data.success) {
                 const detail = response.data.address;
+                if (detail.userId !== id) {
+                        navigate('/error');
+                }
                 setname(detail.name);
                 setaddress(detail.address);
                 setpincode(detail.pincode);
                 setmobile(detail.mobile);
+            } else {
+                navigate('/error');
             }
-        } catch (error) {
-            console.log("inside fetchaddress", error);
+        } catch (error) {            
+            navigate('/error');
         }
     }
 
@@ -42,10 +65,25 @@ function ShippingInfo() {
         fetchaddress();
         scrolltoTopfun();
     }, [])
+
+    const showTost = (message) => {
+        toast.success(message, {
+            position: "bottom-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: 'colored',
+        });
+    }
+
+
     return (
         <>
             <Navbar />
-
+            <ToastContainer />
             <div className="shippingProgress">
                 <div className="stage">
                     <AddLocationAltIcon className='' />
@@ -89,22 +127,22 @@ function ShippingInfo() {
                             <hr style={{ margin: '0px' }} />
                             <div className="orderPrice">
                                 <p>Shipping Charge</p>
-                                <p>₹ {Math.floor(cartQuantity*40)}</p>
+                                <p>₹ {Math.floor(cartQuantity * 40)}</p>
                             </div>
                             <hr style={{ margin: '0px' }} />
                             <div className="orderPrice">
                                 <p>GST</p>
-                                <p>₹ {Math.floor(subtotal/20)}</p>
+                                <p>₹ {Math.floor(subtotal / 20)}</p>
                             </div>
                             <hr style={{ margin: '0px' }} />
                             <div className="orderPrice">
                                 <p>Discount</p>
-                                <p>₹ {Math.floor(subtotal/10)}</p>
+                                <p>₹ {Math.floor(subtotal / 10)}</p>
                             </div>
                             <hr style={{ margin: '0px' }} />
                             <div className="orderPrice">
                                 <h4>Total</h4>
-                                <h5>₹ {Math.floor((subtotal+(subtotal/20)+(cartQuantity*40))-(subtotal/10))}</h5>
+                                <h5>₹ {Math.floor((subtotal + (subtotal / 20) + (cartQuantity * 40)) - (subtotal / 10))}</h5>
                             </div>
                             <Link to={'/payment'}><button className='orderBtn'>PAY NOW</button></Link>
                         </div>

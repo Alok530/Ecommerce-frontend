@@ -81,6 +81,7 @@ function ProductDetails() {
                 }, 2000);
             } else {
                 showTost(response.data.message);
+                navigate('/error');
             }
         } catch (error) {
             console.log("add to cart error", error);

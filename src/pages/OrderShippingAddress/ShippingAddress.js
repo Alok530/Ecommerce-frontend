@@ -19,7 +19,7 @@ const host = "http://localhost:5000/api/";
 
 function ShippingAddress() {
     const navigate = useNavigate();
-    const { scrolltoTopfun } = useContext(EcartContext);
+    const { scrolltoTopfun, cartQuantity } = useContext(EcartContext);
 
     const [name, setname] = useState("");
     const [address, setaddress] = useState("");
@@ -34,7 +34,8 @@ function ShippingAddress() {
             const response = await axios.post(host+'order/saveaddress',{name,address,pincode,mobile,userId});
             console.log(response.data);
             if(response.data.success){
-                navigate('/shippingdetails');
+                const addressId = response.data.id;
+                navigate(`/shippingdetails/${addressId}`);
             }
         } catch (error) {
             console.log("error inside shipping address",error);
@@ -47,7 +48,7 @@ function ShippingAddress() {
             const id = window.localStorage.getItem('ecomuserid');
             // const response = await axios.get('order/fetchaddress/'+id);
             console.log("id is",id);
-            const response = await axios.get(host+'order/fetchaddress/'+id);
+            const response = await axios.post(host+'order/fetchaddress/'+id,{"addressId":0});
             if(response.data.success){
                 const detail = response.data.address;
                 setname(detail.name);
@@ -61,6 +62,10 @@ function ShippingAddress() {
     }
 
     useEffect(() => {
+        if(cartQuantity==0)
+        {
+            navigate('/');
+        }
         fetchaddress();
         scrolltoTopfun();
     }, []);
