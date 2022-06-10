@@ -18,7 +18,7 @@ function Home() {
   useEffect(() => {
     fetchcurrentuserfun();
     scrolltoTopfun();
-  }, [])
+  }, []);
 
   return (
     <>

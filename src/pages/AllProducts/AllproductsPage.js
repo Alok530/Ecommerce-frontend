@@ -9,6 +9,7 @@ import Bottom from '../../components/Bottom/Bottom'
 import products from '../../products';
 import EcartContext from '../../context/CartContext';
 import SearchIcon from '@mui/icons-material/Search';
+import Slider from '@mui/material/Slider';
 
 function AllproductsPage() {
     const { scrolltoTopfun } = useContext(EcartContext);
@@ -20,6 +21,17 @@ function AllproductsPage() {
     const [qyery, setqyery] = useState("");
     console.log(qyery);
 
+    const [ratting, setratting] = useState(0);
+    const [filterprice, setfilterprice] = useState(75000);
+    const changeValue = (event, value) => {
+        setratting(value);
+    };
+    const changeValue2 = (event, value) => {
+        setfilterprice(value);
+    };
+    console.log("ratting val", ratting, filterprice);
+
+
 
     const searchfun = (data) => {
         return data.filter(
@@ -27,23 +39,93 @@ function AllproductsPage() {
                 item.tittle.includes("TV")
         );
     }
-    console.log(products.filter((item)=>item.tittle.toLowerCase().includes(qyery.toLowerCase())));
-    // console.log(searchfun(products));
-
+    // console.log(products.filter((item)=>item.tittle.toLowerCase().includes(qyery.toLowerCase())));
 
     useEffect(() => {
         scrolltoTopfun();
     }, [])
 
+    const [sortbutton, setsortbutton] = useState(0);
+    const [filterbutton, setfilterbutton] = useState(0);
+    const controlfilterButton = () => {
+        if (filterbutton == 1) {
+            setfilterbutton(0);
+        } else {
+            setfilterbutton(1);
+        }
+        setsortbutton(0);
+    }
+    const controlSortButton = () => {
+        if (sortbutton == 1) {
+            setsortbutton(0);
+        } else {
+            setsortbutton(1);
+        }
+        setfilterbutton(0);
+    }
+
     return (
         <>
             <Navbar />
-            <div className="allproductPage">
+            <div className='filterSortingBtn'>
+                <div className="filterBtn" style={{'borderLeft':'none','borderTop':'none'}} onClick={()=>{controlSortButton()}}>
+                    <span>Sorting</span>
+                </div>
+                <div className="filterBtn"  style={{'borderTop':'none','borderRight':'none'}} onClick={()=>{controlfilterButton()}}>
+                    <span>Filter</span>
+                </div>
+            </div>
+            <div className="filterSorting">
+                {filterbutton ? <div className="itemfilter">
+                    <div className="d-flex justify-content-between mb-1">
+                        <h5 className='fw-bold my-0'>Filters</h5>
+                        <h6 className='my-0' onClick={() => { setfiltter(""); setonclickClass(""); setratting(0); setfilterprice(75000); }} style={{ 'cursor': 'pointer', 'color': 'blue' }}>Clear All</h6>
+                    </div>
+                    <hr className='mt-0 mb-1' />
+                    <h5>Categories</h5>
+                    <ul style={{ 'listStyle': 'none', 'paddingLeft': '10px', 'cursor': 'pointer' }}>
+                        <li className={line == 1 ? onclickClass : ''} onClick={() => { setfiltter(""); setonclickClass("filtterselect"); setline(1) }}>All</li>
+                        <li className={line == 2 ? onclickClass : ''} onClick={() => { setfiltter("laptop"); setonclickClass("filtterselect"); setline(2) }}>Laptop</li>
+                        <li className={line == 3 ? onclickClass : ''} onClick={() => { setfiltter("mobile"); setonclickClass("filtterselect"); setline(3) }}>Mobile</li>
+                        <li className={line == 4 ? onclickClass : ''} onClick={() => { setfiltter("footwear"); setonclickClass("filtterselect"); setline(4) }}>Footwear</li>
+                        <li className={line == 5 ? onclickClass : ''} onClick={() => { setfiltter("cloths"); setonclickClass("filtterselect"); setline(5) }}>Cloths</li>
+                        <li className={line == 6 ? onclickClass : ''} onClick={() => { setfiltter("tshirt"); setonclickClass("filtterselect"); setline(6) }}>T-shirt</li>
+                        <li className={line == 7 ? onclickClass : ''} onClick={() => { setfiltter("computer"); setonclickClass("filtterselect"); setline(7) }}>Computers</li>
+                        <li className={line == 8 ? onclickClass : ''} onClick={() => { setfiltter("tablet"); setonclickClass("filtterselect"); setline(8) }}>Tablet</li>
+                    </ul>
+                    <h5 for="customRange3" className="form-label">Product Ratting</h5>
+                    <Slider
+                        aria-label="Temperature"
+                        defaultValue={0}
+                        onChange={changeValue}
+                        value={ratting}
+                        valueLabelDisplay="auto"
+                        step={1}
+                        marks
+                        min={0}
+                        max={5}
+                    />
+                    <h5 for="customRange3" className="form-label">Products Price</h5>
+                    <Slider
+                        aria-label="Temperature"
+                        defaultValue={75000}
+                        onChange={changeValue2}
+                        value={filterprice}
+                        valueLabelDisplay="auto"
+                        step={10000}
+                        marks
+                        min={1000}
+                        max={75000}
+                    />
+                    <button onClick={() => { setsortbutton(0); setfilterbutton(0); }} className="applyBtn">Apply</button>
+                </div> : ''}
+            </div>
+            {(filterbutton == 0 && sortbutton == 0) ? <div className="allproductPage">
                 <div className="fillter">
                     <div className="fillterDiv">
                         <div className="d-flex justify-content-between mb-1">
                             <h5 className='fw-bold my-0'>Filters</h5>
-                            <h6 className='my-0' onClick={() => { setfiltter(""); setonclickClass("") }} style={{ 'cursor': 'pointer', 'color': 'blue' }}>Clear All</h6>
+                            <h6 className='my-0' onClick={() => { setfiltter(""); setonclickClass(""); setratting(0); setfilterprice(75000); }} style={{ 'cursor': 'pointer', 'color': 'blue' }}>Clear All</h6>
                         </div>
                         <hr className='mt-0 mb-3' />
                         <h5>Categories</h5>
@@ -58,27 +140,46 @@ function AllproductsPage() {
                             <li className={line == 8 ? onclickClass : ''} onClick={() => { setfiltter("tablet"); setonclickClass("filtterselect"); setline(8) }}>Tablet</li>
                         </ul>
                         <h5 for="customRange3" className="form-label">Product Ratting</h5>
-                        <input type="range" onChange={() => { setinputval(inputval) }} className="form-range" min="1" max="5" step="0.5" id="customRange3"></input>
+                        <Slider
+                            aria-label="Temperature"
+                            defaultValue={0}
+                            onChange={changeValue}
+                            value={ratting}
+                            valueLabelDisplay="auto"
+                            step={1}
+                            marks
+                            min={0}
+                            max={5}
+                        />
                         <h5 for="customRange3" className="form-label">Products Price</h5>
-                        <input type="range" onChange={() => { setinputval(inputval) }} className="form-range" min="1" max="5" step="0.5" id="customRange3" form-range-track-height={'1px'}></input>
-                        <h1>{ }</h1>
+                        <Slider
+                            aria-label="Temperature"
+                            defaultValue={75000}
+                            onChange={changeValue2}
+                            value={filterprice}
+                            valueLabelDisplay="auto"
+                            step={10000}
+                            marks
+                            min={1000}
+                            max={75000}
+                        />
                     </div>
                 </div>
                 <div className="products">
                     <h2 className='text-center mb-1'>Products</h2>
                     <div className="my-3 searchBox" style={{ 'textAlign': 'center' }}>
                         <input className='searchBoxInput' type="text" value={qyery} placeholder="Search for products.." onChange={(e) => { setqyery(e.target.value) }} />
-                        <SearchIcon/>
+                        <SearchIcon />
                     </div>
                     <div className="row">
                         {
                             qyery === "" && products.map((item) => {
-                                return <Item key={item.id} item={item} cat={filtter} />
+                                return <Item key={item.id} item={item} cat={filtter} ratting={ratting} filterprice={filterprice} />
                             })
                         }
                         {
-                            qyery !== "" && (products.filter((item)=>item.tittle.toLowerCase().includes(qyery.toLowerCase()))).map((item) => {
-                                return <Item key={item.id} item={item} cat={filtter} />
+                            qyery !== "" && (products.filter((item) => item.tittle.toLowerCase().includes(qyery.toLowerCase()))).map((item) => {
+                                return <Item key={item.id} item={item} cat={filtter} ratting={ratting} filterprice={filterprice} />
                             })
                         }
                         {/*<Item itemUrl={'/images/img12.jpg'} />
@@ -103,7 +204,7 @@ function AllproductsPage() {
                         <Item itemUrl={'/images/lenvoLaptop.webp'} />*/}
                     </div>
                 </div>
-            </div>
+            </div> : ''}
             <Footer />
             <Bottom />
         </>

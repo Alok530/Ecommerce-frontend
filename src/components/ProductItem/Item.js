@@ -4,12 +4,12 @@ import { useState } from 'react';
 import StarRatings from 'react-star-ratings';
 import { useNavigate } from 'react-router-dom';
 
-function Item({ item,cat }) {
+function Item({ item,cat,ratting,filterprice }) {
     const [temp, settemp] = useState(5);
     const navigate = useNavigate();
     return (
         <>
-            {item.category.indexOf(cat) !== -1 || cat===""? <div className="item" onClick={()=>{navigate('/product/'+item.id)}}>
+            {(item.category.indexOf(cat) !== -1 || cat==="") && (item.ratting>=ratting && item.price<=filterprice)? <div className="item" onClick={()=>{navigate('/product/'+item.id)}}>
                 <div className="itemImg">
                     <img src={item.image} />
                 </div>
