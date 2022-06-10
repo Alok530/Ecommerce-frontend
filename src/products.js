@@ -1,7 +1,7 @@
 const products = [
     {
         "id":1,
-        "tittle":"Canon Camera",
+        "tittle":"Laptop",
         "image":'/images/img4.jpg',
         "price":14599,
         "ratting":4.5,
@@ -10,7 +10,7 @@ const products = [
     },
     {
         "id":2,
-        "tittle":"Canon Camera",
+        "tittle":"TV",
         "image":'/images/img8.jpg',
         "price":14599,
         "ratting":4.5,
@@ -19,7 +19,7 @@ const products = [
     },
     {
         "id":3,
-        "tittle":"Canon Camera",
+        "tittle":"Lower",
         "image":'/images/img3.jpg',
         "price":14599,
         "ratting":4.5,
@@ -28,7 +28,7 @@ const products = [
     },
     {
         "id":4,
-        "tittle":"Canon Camera",
+        "tittle":"Mobile",
         "image":'/images/iPhone12.webp',
         "price":75599,
         "ratting":5,
@@ -37,7 +37,7 @@ const products = [
     },
     {
         "id":5,
-        "tittle":"Canon Camera",
+        "tittle":"Shirt",
         "image":'/images/img5.jpg',
         "price":14599,
         "ratting":4,
@@ -46,7 +46,7 @@ const products = [
     },
     {
         "id":6,
-        "tittle":"Canon Camera",
+        "tittle":"Jens",
         "image":'/images/img1.jpg',
         "price":14599,
         "ratting":4.8,
@@ -55,7 +55,7 @@ const products = [
     },
     {
         "id":7,
-        "tittle":"Canon Camera",
+        "tittle":"Shose",
         "image":'/images/img11.jpg',
         "price":14599,
         "ratting":4.9,
@@ -64,7 +64,7 @@ const products = [
     },
     {
         "id":8,
-        "tittle":"Canon Camera",
+        "tittle":"Shirt",
         "image":'/images/img1.jpg',
         "price":14599,
         "ratting":5,
@@ -73,7 +73,7 @@ const products = [
     },
     {
         "id":9,
-        "tittle":"Canon Camera",
+        "tittle":"Tshirt",
         "image":'/images/img12.jpg',
         "price":14599,
         "ratting":3.5,

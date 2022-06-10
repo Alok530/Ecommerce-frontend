@@ -30,7 +30,7 @@ function App() {
         <Route path="/shippingaddress" element={<ShippingAddress />} />
         <Route path="/shippingdetails/:addressId" element={<ShippingInfo />} />
         <Route path="/payment" element={<Payment />} />
-        <Route path="/order" element={<Order />} />
+        <Route path="/order/:orderId" element={<Order />} />
         <Route path="/account" element={<Profile />} />
         <Route path="/updatepassword" element={<UpdatePassword />} />
         <Route path="/updateprofile" element={<UpdateProfile />} />

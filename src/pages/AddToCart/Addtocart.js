@@ -16,7 +16,7 @@ import NoAccountsIcon from '@mui/icons-material/NoAccounts';
 const host = "http://localhost:5000/api/";
 
 function Addtocart() {
-    const { scrolltoTopfun, setcartQuantity, cartQuantity, subtotal, setsubtotal } = useContext(EcartContext);
+    const { scrolltoTopfun,fetchusercart,cartproducts, cartQuantity, subtotal, setsubtotal } = useContext(EcartContext);
 
     const navigate = useNavigate();
     useEffect(() => {
@@ -24,26 +24,26 @@ function Addtocart() {
     }, [])
 
     const [quantity, setquantity] = useState(1);
-    const [cartproducts, setcartproducts] = useState([]);
+    // const [cartproducts, setcartproducts] = useState([]);
 
-    const fetchusercart = async () => {
-        try {
-            const id = window.localStorage.getItem('ecomuserid');
-            const response = await axios.get(host + 'cart/fetchcart/' + id);
-            if (response.data.length == 0) {
-                setsubtotal(0);
-            }
-            let temp = 0;
-            for (let i = 0; i < response.data.length; i++) {
-                temp = temp + response.data[i].price;
-            }
-            setsubtotal(temp);
-            setcartproducts(response.data);
-            setcartQuantity(response.data.length);
-        } catch (error) {
-            console.log("error inside add to cart", error);
-        }
-    }
+    // const fetchusercart = async () => {
+    //     try {
+    //         const id = window.localStorage.getItem('ecomuserid');
+    //         const response = await axios.get(host + 'cart/fetchcart/' + id);
+    //         if (response.data.length == 0) {
+    //             setsubtotal(0);
+    //         }
+    //         let temp = 0;
+    //         for (let i = 0; i < response.data.length; i++) {
+    //             temp = temp + response.data[i].price;
+    //         }
+    //         setsubtotal(temp);
+    //         setcartproducts(response.data);
+    //         setcartQuantity(response.data.length);
+    //     } catch (error) {
+    //         console.log("error inside add to cart", error);
+    //     }
+    // }
 
     useEffect(() => {
         if (window.localStorage.getItem('ecomuserid')) {

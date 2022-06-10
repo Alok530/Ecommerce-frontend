@@ -54,9 +54,30 @@ const CartStateContext = (props) => {
 
     // for total price of cart
     const [subtotal, setsubtotal] = useState(0);
+    const [cartproducts, setcartproducts] = useState([]);
+
+    const fetchusercart = async () => {
+        try {
+            const id = window.localStorage.getItem('ecomuserid');
+            const response = await axios.get(host + 'cart/fetchcart/' + id);
+            if (response.data.length == 0) {
+                setsubtotal(0);
+            }
+            let temp = 0;
+            for (let i = 0; i < response.data.length; i++) {
+                temp = temp + response.data[i].price;
+            }
+            setsubtotal(temp);
+            setcartproducts(response.data);
+            setcartQuantity(response.data.length);
+        } catch (error) {
+            console.log("error inside add to cart", error);
+        }
+    }
+
 
     return (
-        <EcartContext.Provider value={{ scrolltoTopfun, fetchcurrentuserfun, fetchCurrentUserCartLength,currentuser, cartQuantity, setcartQuantity,subtotal,setsubtotal }}>
+        <EcartContext.Provider value={{ fetchusercart,cartproducts,setcartproducts,scrolltoTopfun, fetchcurrentuserfun, fetchCurrentUserCartLength,currentuser, cartQuantity, setcartQuantity,subtotal,setsubtotal }}>
             {props.children}
         </EcartContext.Provider>
     )

@@ -8,9 +8,7 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import PersonIcon from '@mui/icons-material/Person';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
-import { Link } from 'react-router-dom';
 import EcartContext from '../../context/CartContext'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -19,7 +17,7 @@ const host = "http://localhost:5000/api/";
 
 function ShippingAddress() {
     const navigate = useNavigate();
-    const { scrolltoTopfun, cartQuantity } = useContext(EcartContext);
+    const { scrolltoTopfun, cartQuantity, fetchusercart } = useContext(EcartContext);
 
     const [name, setname] = useState("");
     const [address, setaddress] = useState("");
@@ -69,6 +67,12 @@ function ShippingAddress() {
         fetchaddress();
         scrolltoTopfun();
     }, []);
+
+    useEffect(() => {
+        if (window.localStorage.getItem('ecomuserid')) {
+            fetchusercart();
+        }
+    }, [])
      
     return (
         <>

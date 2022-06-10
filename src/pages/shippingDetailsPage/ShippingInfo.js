@@ -19,7 +19,7 @@ function ShippingInfo() {
     const addressId = useParams().addressId;
 
     const navigate = useNavigate();
-    const { scrolltoTopfun, subtotal, cartQuantity } = useContext(EcartContext);
+    const { scrolltoTopfun, subtotal, cartQuantity, fetchusercart } = useContext(EcartContext);
 
     useEffect(() => {
         console.log("id si--",addressId);
@@ -64,6 +64,12 @@ function ShippingInfo() {
     useEffect(() => {
         fetchaddress();
         scrolltoTopfun();
+    }, [])
+
+    useEffect(() => {
+        if (window.localStorage.getItem('ecomuserid')) {
+            fetchusercart();
+        }
     }, [])
 
     const showTost = (message) => {

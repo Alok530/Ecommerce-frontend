@@ -23,6 +23,26 @@
     color: blue;
     font-weight: 700;
 }
+.searchBox{
+    padding: 3px 5px;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    border: 1px solid gray;
+    cursor: pointer;
+    border-radius: 6px;
+}
+.searchBox:hover{
+    border-color: gainsboro;
+    box-shadow: 1px 1px 5px -1px rgba(0, 0, 0, 0.8);
+}
+.searchBoxInput{
+    border: none;
+    outline: none;
+    width: 90%;
+}
 
 @media (max-width:800px){
     .fillter{
@@ -33,5 +53,14 @@
     }
     .allproductPage{
         padding: 23px 15px;
+    }
+    .searchBox{
+        width: 70%;
+    }
+}
+
+@media (max-width:500px){
+    .searchBox{
+        width: 100%;
     }
 }

@@ -8,13 +8,14 @@ import { useState, useEffect, useContext } from 'react';
 import EcartContext from '../../context/CartContext';
 
 export default function Navbar() {
-    const {cartQuantity,fetchCurrentUserCartLength} = useContext(EcartContext);
+    const { cartQuantity, fetchCurrentUserCartLength } = useContext(EcartContext);
     const scrolatTopfun = () => {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
     const [currentnav, setcurrentnav] = useState("");
-    
+    const [searchQuery, setsearchQuery] = useState("");
+
     useEffect(() => {
         fetchCurrentUserCartLength();
         if (window.location.pathname == '/')
@@ -55,8 +56,8 @@ export default function Navbar() {
                             <Link to={'/cart'} style={{ 'textDecoration': 'none' }}><ShoppingCartIcon className='navbarIcon' /></Link>
                             <Link to={'/cart'} style={{ 'textDecoration': 'none' }}><span className='cartItemCount'>{cartQuantity}</span></Link>
                         </div></> : <>
-                        <Link style={{'textDecoration': 'none'}} to={'/login'}><span className='loginBtn me-2'>Login</span></Link>
-                        <Link style={{'textDecoration': 'none'}} to={'/register'}><span className='loginBtn'>Register</span>  </Link>
+                        <Link style={{ 'textDecoration': 'none' }} to={'/login'}><span className='loginBtn me-2'>Login</span></Link>
+                        <Link style={{ 'textDecoration': 'none' }} to={'/register'}><span className='loginBtn'>Register</span>  </Link>
                     </>}
                 </div>
             </div>

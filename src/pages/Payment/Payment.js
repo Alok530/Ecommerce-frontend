@@ -19,7 +19,7 @@ const host = "http://localhost:5000/api/";
 
 function Payment() {
     const navigate = useNavigate();
-    const { scrolltoTopfun, subtotal, cartQuantity } = useContext(EcartContext);
+    const { scrolltoTopfun, subtotal,setcartQuantity ,cartQuantity, fetchusercart } = useContext(EcartContext);
     const [option, setoption] = useState(0);
     useEffect(() => {
         scrolltoTopfun();
@@ -27,12 +27,31 @@ function Payment() {
 
     const buyNowfun = async () => {
         try {
-            const userId = window.localStorage.getItem('ecomuserId');
-            const response = await axios.post(host + '/palcedorder/' + userId, { userId });
+            const price = (subtotal + (subtotal / 20) + (cartQuantity * 40)) - (subtotal / 10);
+            const userId = window.localStorage.getItem('ecomuserid');
+            const response = await axios.post(host + 'order/placedorder', { userId, price });
+            if(response.data.success){
+                console.log("order placed",response.data);
+                setcartQuantity(0);
+                navigate('/order/'+response.data.order._id);
+            }else{
+
+            }
         } catch (error) {
             console.log("error inside buynowfun", error);
         }
     }
+
+    useEffect(() => {
+        if(cartQuantity==0){
+            navigate('/cart');
+        }
+        if (window.localStorage.getItem('ecomuserid')) {
+            fetchusercart();
+        }else{
+            navigate('/error');
+        }
+    }, [])
 
     return (
         <>
@@ -59,7 +78,7 @@ function Payment() {
             <div className="paymentpage">
                 <h2>Payment</h2>
                 <div className="mb-4 paymentOption">
-                    <button className='me-1' onClick={() => { navigate('/order') }}>Cash on Dileviry</button>
+                    <button className='me-1' onClick={() => { buyNowfun() }}>Cash on Dileviry</button>
                     <button className='ms-1' onClick={() => { setoption(1) }}>Pay Now</button>
                 </div>
                 {option == 1 ? <div className="cardinfo">
@@ -68,7 +87,7 @@ function Payment() {
                         <div className="cardInput"><CreditCardIcon className='me-2' /><input type="text" placeholder='Card Number' /></div>
                         <div className="cardInput"><CalendarMonthIcon className='me-2' /><input type="text" placeholder='Expiery Date' /></div>
                         <div className="cardInput"><KeyIcon className='me-2' /><input type="text" placeholder='CVV' /></div>
-                        <Link to={'/order'}><button className='orderBtn mt-0'>Pay - ₹{Math.floor((subtotal + (subtotal / 20) + (cartQuantity * 40)) - (subtotal / 10))}</button></Link>
+                        <button className='orderBtn mt-0' onClick={()=>{buyNowfun()}}>Pay - ₹{Math.floor((subtotal + (subtotal / 20) + (cartQuantity * 40)) - (subtotal / 10))}</button>
                     </div>
                 </div> : ''}
             </div>
