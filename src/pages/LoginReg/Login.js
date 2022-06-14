@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EcartContext from '../../context/CartContext'
+import axiosInstance from '../../config';
 
 const host = "http://localhost:5000/api/";
 
@@ -26,7 +27,7 @@ function Login() {
     const loginfun = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post(host + 'auth/login', { email, password });
+            const response = await axiosInstance.post('auth/login', { email, password });
             if (response.data.success == true) {
                 window.localStorage.setItem('ecomuserid', response.data.user._id);
                 navigate('/');
