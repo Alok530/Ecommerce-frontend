@@ -8,7 +8,8 @@ import KeyIcon from '@mui/icons-material/Key';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Link } from 'react-router-dom';
 import EcartContext from '../../context/CartContext';
-import Skeleton  from '../../components/Skeleton/Skeleton';
+import Skeleton from '../../components/Skeleton/Skeleton';
+import NoAccountsIcon from '@mui/icons-material/NoAccounts';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 import axiosInstance from '../../config';
@@ -26,7 +27,7 @@ function Profile() {
             try {
                 const id = window.localStorage.getItem('ecomuserid');
                 const response = await axiosInstance.get(`auth/getuser/${id}`);
-                if(!response.data.success){
+                if (!response.data.success) {
                     navigate('/error');
                 }
                 const user = response.data.user;
@@ -54,7 +55,7 @@ function Profile() {
     return (
         <>
             <Navbar />
-            <div className="profilepage">
+            {window.localStorage.getItem('ecomuserid') ? <div className="profilepage">
                 <div className="profile">
                     {currentuser == "" ? <Skeleton /> : <>
                         <div className="profilePic mb-3">
@@ -106,7 +107,13 @@ function Profile() {
                         </div>
                     </div></Link>
                 </div>
-            </div>
+            </div> :
+                <div>
+                    <NoAccountsIcon style={{ 'fontSize': '50px', color: 'black' }} />
+                    <h2 id='temp' className='fw-bold'>You are not login</h2>
+                    <Link to={'/login'}><button className='EmptyCartDivBtn mt-0'>Login Now</button></Link>
+                </div>
+            }
             <Footer />
             <Bottom />
         </>
