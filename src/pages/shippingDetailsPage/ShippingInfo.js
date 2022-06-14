@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axiosInstance from '../../config';
 
 const host = "http://localhost:5000/api/";
 
@@ -43,7 +44,7 @@ function ShippingInfo() {
             if (!id) {
                 navigate('/login');
             }
-            const response = await axios.post(host + 'order/fetchaddress/' + 0, { "addressId": addressId });
+            const response = await axiosInstance.post('order/fetchaddress/' + 0, { "addressId": addressId });
             if (response.data.success) {
                 const detail = response.data.address;
                 if (detail.userId !== id) {

@@ -11,6 +11,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../../config';
 
 const host = "http://localhost:5000/api/";
 
@@ -39,7 +40,7 @@ function UpdatePassword() {
         console.log(username,mobile,gender);
         try {
             const id = window.localStorage.getItem('ecomuserid');
-            const response = await axios.put(host+'auth/updateprofile/'+id,{username,gender,mobile});
+            const response = await axiosInstance.put('auth/updateprofile/'+id,{username,gender,mobile});
             if(response.data.success){
                 setresponseStatus(1);
                 showTost(response.data.message);

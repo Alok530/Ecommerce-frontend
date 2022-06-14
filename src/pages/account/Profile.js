@@ -11,6 +11,7 @@ import EcartContext from '../../context/CartContext';
 import Skeleton  from '../../components/Skeleton/Skeleton';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
+import axiosInstance from '../../config';
 
 const host = "http://localhost:5000/api/";
 
@@ -24,7 +25,7 @@ function Profile() {
         if (window.localStorage.getItem('ecomuserid')) {
             try {
                 const id = window.localStorage.getItem('ecomuserid');
-                const response = await axios.get(host + `auth/getuser/${id}`);
+                const response = await axiosInstance.get(`auth/getuser/${id}`);
                 if(!response.data.success){
                     navigate('/error');
                 }

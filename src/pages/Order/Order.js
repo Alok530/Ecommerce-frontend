@@ -8,6 +8,7 @@ import EcartContext from '../../context/CartContext'
 import { useParams } from 'react-router';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../../config';
 
 const host = "http://localhost:5000/api/";
 
@@ -24,7 +25,7 @@ function Order() {
     const checkoutorder = async () => {
         try {
             console.log("order id is ",orderId);
-            const response = await axios.get(host+'order/checkorderexist/'+orderId);
+            const response = await axiosInstance.get('order/checkorderexist/'+orderId);
             if(response.data.isExist){
                 navigate('/vieworder/'+response.data.order);
             }else{

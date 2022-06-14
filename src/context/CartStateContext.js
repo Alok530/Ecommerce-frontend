@@ -2,6 +2,7 @@ import EcartContext from "./CartContext";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import axiosInstance from "../config";
 
 const host = "http://localhost:5000/api/";
 
@@ -21,7 +22,7 @@ const CartStateContext = (props) => {
         if (window.localStorage.getItem('ecomuserid')) {
             try {
                 const id = window.localStorage.getItem('ecomuserid');
-                const response = await axios.get(host + `auth/getuser/${id}`);
+                const response = await axiosInstance.get(`auth/getuser/${id}`);
                 const user = response.data.user;
                 setcurrentuser({
                     'username': user.username,
@@ -47,7 +48,7 @@ const CartStateContext = (props) => {
     const fetchCurrentUserCartLength = async () => {
         if (window.localStorage.getItem('ecomuserid')) {
             const id = window.localStorage.getItem('ecomuserid');
-            const response = await axios.get(host + 'cart/fetchcart/' + id);
+            const response = await axiosInstance.get('cart/fetchcart/' + id);
             setcartQuantity(response.data.length);
         }
     }
@@ -59,7 +60,7 @@ const CartStateContext = (props) => {
     const fetchusercart = async () => {
         try {
             const id = window.localStorage.getItem('ecomuserid');
-            const response = await axios.get(host + 'cart/fetchcart/' + id);
+            const response = await axiosInstance.get('cart/fetchcart/' + id);
             if (response.data.length == 0) {
                 setsubtotal(0);
             }

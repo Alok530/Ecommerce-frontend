@@ -14,6 +14,7 @@ import { Link, Navigate } from 'react-router-dom';
 import EcartContext from '../../context/CartContext';
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
+import axiosInstance from '../../config'
 
 const host = "http://localhost:5000/api/";
 
@@ -29,7 +30,7 @@ function Payment() {
         try {
             const price = (subtotal + (subtotal / 20) + (cartQuantity * 40)) - (subtotal / 10);
             const userId = window.localStorage.getItem('ecomuserid');
-            const response = await axios.post(host + 'order/placedorder', { userId, price });
+            const response = await axiosInstance.post('order/placedorder', { userId, price });
             if(response.data.success){
                 console.log("order placed",response.data);
                 setcartQuantity(0);

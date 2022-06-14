@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import StarRatings from 'react-star-ratings';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../../config';
 
 const host = "http://localhost:5000/api/";
 
@@ -34,7 +35,7 @@ function ProductDetails() {
         try {
             const userId = window.localStorage.getItem('ecomuserid');
             const productId = productID;
-            const response = await axios.post(host + 'cart/checkcart', { userId, productId });
+            const response = await axiosInstance.post('cart/checkcart', { userId, productId });
             console.log("hello",response.data);
             if (response.data.isExist) {
                 setisExist(1);

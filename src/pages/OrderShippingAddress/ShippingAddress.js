@@ -12,6 +12,7 @@ import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import EcartContext from '../../context/CartContext'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../../config';
 
 const host = "http://localhost:5000/api/";
 
@@ -29,7 +30,7 @@ function ShippingAddress() {
         event.preventDefault();
         try {
             const userId = window.localStorage.getItem('ecomuserid');
-            const response = await axios.post(host+'order/saveaddress',{name,address,pincode,mobile,userId});
+            const response = await axiosInstance.post('order/saveaddress',{name,address,pincode,mobile,userId});
             console.log(response.data);
             if(response.data.success){
                 const addressId = response.data.id;

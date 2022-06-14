@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EcartContext from '../../context/CartContext'
+import axiosInstance from '../../config';
 
 const host = "http://localhost:5000/api/";
 
@@ -28,7 +29,7 @@ function Register() {
     const registerfun = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post(host + 'auth/register', { username, email, password });
+            const response = await axiosInstance.post('auth/register', { username, email, password });
             if (response.data.success == true) {
                 navigate('/login');
             } else {

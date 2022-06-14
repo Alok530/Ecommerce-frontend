@@ -4,6 +4,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
@@ -23,9 +24,9 @@ function Footer() {
                         <h5>Follow Us</h5>
                         <div className="d-flex justify-content-center followicon">
                             <FacebookIcon />
-                            <InstagramIcon className='mx-2'/>
+                            <InstagramIcon className='mx-2' />
                             <YouTubeIcon />
-                            <LinkedInIcon className='ms-2'/>
+                            <LinkedInIcon className='ms-2' />
                         </div>
                     </div>
                     <div className="col-md-3 text-center footerLink">

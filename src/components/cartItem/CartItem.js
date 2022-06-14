@@ -8,6 +8,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EcartContext from '../../context/CartContext';
+import axiosInstance from '../../config';
 
 const host = "http://localhost:5000/api/";
 
@@ -31,7 +32,7 @@ function CartItem({ id, quantity, price}) {
     const removefun = async () => {
         try {
             const userid = window.localStorage.getItem('ecomuserid');
-            const response = await axios.post(host+'cart/removecartitem',{"productId":productID,"userId":userid})
+            const response = await axiosInstance.post('cart/removecartitem',{"productId":productID,"userId":userid})
             if(response.data.success){
                 setcartQuantity(cartQuantity-1);
                 setDisplayNone("DisplayNone");
