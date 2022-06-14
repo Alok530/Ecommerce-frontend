@@ -108,7 +108,7 @@ function Profile() {
                     </div></Link>
                 </div>
             </div> :
-                <div>
+                <div className="profilepage">
                     <NoAccountsIcon style={{ 'fontSize': '50px', color: 'black' }} />
                     <h2 id='temp' className='fw-bold'>You are not login</h2>
                     <Link to={'/login'}><button className='EmptyCartDivBtn mt-0'>Login Now</button></Link>
