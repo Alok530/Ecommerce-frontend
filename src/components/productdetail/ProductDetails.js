@@ -72,7 +72,7 @@ function ProductDetails() {
             const productId = productID;
             const quantity = 1;
             const price = product.price;
-            const response = await axios.post(host + 'cart/addtocart', { userId, productId, quantity, price});
+            const response = await axiosInstance.post('cart/addtocart', { userId, productId, quantity, price});
             console.log(response.data);
             if (response.data.success) {
                 setisExist(1);
