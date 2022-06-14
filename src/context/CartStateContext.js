@@ -49,6 +49,10 @@ const CartStateContext = (props) => {
         if (window.localStorage.getItem('ecomuserid')) {
             const id = window.localStorage.getItem('ecomuserid');
             const response = await axiosInstance.get('cart/fetchcart/' + id);
+            if (response.data == {}) {
+                setcartQuantity(0);
+                return;
+            }
             setcartQuantity(response.data.length);
         }
     }
@@ -78,7 +82,7 @@ const CartStateContext = (props) => {
 
 
     return (
-        <EcartContext.Provider value={{ fetchusercart,cartproducts,setcartproducts,scrolltoTopfun, fetchcurrentuserfun, fetchCurrentUserCartLength,currentuser, cartQuantity, setcartQuantity,subtotal,setsubtotal }}>
+        <EcartContext.Provider value={{ fetchusercart, cartproducts, setcartproducts, scrolltoTopfun, fetchcurrentuserfun, fetchCurrentUserCartLength, currentuser, cartQuantity, setcartQuantity, subtotal, setsubtotal }}>
             {props.children}
         </EcartContext.Provider>
     )
