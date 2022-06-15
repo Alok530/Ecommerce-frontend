@@ -1,0 +1,45 @@
+.orderdiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid grey;
+    width: 80%;
+    background-color: white;
+    border-radius: 3px;
+}
+.ordersubdiv{
+    width: 33%;
+    display: flex;
+    justify-content: flex-start;
+}
+.ordersubdiv img{
+    width: 100px;
+}
+
+.ordersubdivInSmall img{
+    width: 80px;
+}
+.ordersubdivInSmall{
+    display: none;
+}
+
+@media (max-width:750px)
+{
+    .orderdiv{
+        width: 100%;
+    }
+    .ordersubdiv{
+        display: none;
+    }
+    .ordersubdivInSmall{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        border: 1px solid grey;
+        width: 100%;
+        background-color: white;
+        border-radius: 3px;
+    }
+}

@@ -16,6 +16,8 @@ import Register from './pages/LoginReg/Register'
 import Tostify from './components/Tostify/Tostify'
 import AllproductsPage from './pages/AllProducts/AllproductsPage'
 import Errorpage from './components/404page/Errorpage'
+import AllOrder from './pages/Allorders/AllOrder'
+import Trackorder from './pages/TrackOrder/Trackorder'
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
         <Route path="/updatepassword" element={<UpdatePassword />} />
         <Route path="/updateprofile" element={<UpdateProfile />} />
         <Route path="/skc" element={<Skeleton />} />
+        <Route path="/myorder" element={<AllOrder />} />
+        <Route path="/trackorder" element={<Trackorder />} />
         <Route path="/error" element={<Errorpage/>} />
         <Route path="*" element={<Errorpage/>} />
       </Routes>

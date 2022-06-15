@@ -1,0 +1,29 @@
+.trackOrderpage{
+    width: 100%;
+    padding: 20px 10%;
+}
+.trackorderdiv2{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.OrderAddress,.orderItem{
+    width: 49%;
+}
+.address img{
+    width: 80px;
+}
+
+@media (max-width:700px){
+    .trackorderdiv2{
+        flex-direction: column;
+        align-items: center;
+    }
+    .OrderAddress,.orderItem{
+        width: 100%;
+    }
+    .trackOrderpage{
+        padding: 12px 8px;
+    }
+}

@@ -36,7 +36,7 @@ function ProductDetails() {
             const userId = window.localStorage.getItem('ecomuserid');
             const productId = productID;
             const response = await axiosInstance.post('cart/checkcart', { userId, productId });
-            console.log("hello",response.data);
+            console.log("hello", response.data);
             if (response.data.isExist) {
                 setisExist(1);
             } else {
@@ -63,7 +63,7 @@ function ProductDetails() {
     const addtocartfun = async () => {
         try {
             const userId = window.localStorage.getItem('ecomuserid');
-            if (!userId) {
+            if (!window.localStorage.getItem('ecomuserid')) {
                 showTost("You are not login");
                 setTimeout(() => {
                     navigate('/login');
@@ -72,7 +72,7 @@ function ProductDetails() {
             const productId = productID;
             const quantity = 1;
             const price = product.price;
-            const response = await axiosInstance.post('cart/addtocart', { userId, productId, quantity, price});
+            const response = await axiosInstance.post('cart/addtocart', { userId, productId, quantity, price });
             console.log(response.data);
             if (response.data.success) {
                 setisExist(1);

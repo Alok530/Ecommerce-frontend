@@ -7,7 +7,7 @@ import Bottom from '../../components/Bottom/Bottom';
 import EcartContext from '../../context/CartContext'
 import { useParams } from 'react-router';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axiosInstance from '../../config';
 
 const host = "http://localhost:5000/api/";
@@ -47,7 +47,7 @@ function Order() {
                 <div className="order text-center">
                     <CheckCircleIcon style={{ 'fontSize': '60px', color: 'orangered' }} />
                     <h2 id='temp'>Your Order has been Placed Successfully {orderId} </h2>
-                    <button className='orderBtn mt-0' style={{ width: '40%' }}>View Order</button>
+                    <Link style={{'textDecoration':'none'}} to='/trackorder'><button className='orderBtn mt-0' style={{ width: '40%' }}>View Order</button></Link>
                 </div>
             </div>
             <Footer />
