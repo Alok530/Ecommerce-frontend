@@ -47,7 +47,7 @@ function ShippingAddress() {
             const id = window.localStorage.getItem('ecomuserid');
             // const response = await axios.get('order/fetchaddress/'+id);
             console.log("id is",id);
-            const response = await axios.post(host+'order/fetchaddress/'+id,{"addressId":0});
+            const response = await axiosInstance('order/fetchaddress/'+id,{"addressId":0});
             if(response.data.success){
                 const detail = response.data.address;
                 setname(detail.name);
