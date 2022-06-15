@@ -5,6 +5,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
 import './trackorder.css';
+import Bottom from '../../components/Bottom/Bottom';
 
 function Trackorder() {
     return (
@@ -63,6 +64,7 @@ function Trackorder() {
                 </div>
             </div>
             <Footer />
+            <Bottom/>
         </>
     )
 }

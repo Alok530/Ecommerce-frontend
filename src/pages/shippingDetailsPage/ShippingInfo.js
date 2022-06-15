@@ -13,6 +13,7 @@ import { useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axiosInstance from '../../config';
+import Footer from '../../components/footer/Footer';
 
 const host = "http://localhost:5000/api/";
 
@@ -156,6 +157,7 @@ function ShippingInfo() {
                     </div>
                 </div>
             </div>
+            <Footer/>
             <Bottom />
         </>
     )

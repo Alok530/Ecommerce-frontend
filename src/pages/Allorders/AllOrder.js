@@ -1,4 +1,5 @@
 import React from 'react';
+import Bottom from '../../components/Bottom/Bottom';
 import Footer from '../../components/footer/Footer';
 import MyorderItem from '../../components/myorderItem/MyorderItem';
 import Navbar from '../../components/navbar/Navbar';
@@ -18,8 +19,9 @@ function AllOrder() {
                 </div>
             </div>
             <Footer/>
+            <Bottom/>
         </>
     )
 }
 
-export default AllOrder
+export default AllOrder;
