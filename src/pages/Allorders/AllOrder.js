@@ -36,8 +36,8 @@ function AllOrder() {
                 <h2>Your Orders</h2>
                 <div className="allorders">
                     {
-                        allorder.map((item)=>{
-                            return 
+                        allorder.map((item) => {
+                            return <MyorderItem key={item._id} id={item._id}/>;
                         })
                     }
                 </div>

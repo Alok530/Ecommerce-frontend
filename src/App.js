@@ -38,7 +38,7 @@ function App() {
         <Route path="/updateprofile" element={<UpdateProfile />} />
         <Route path="/skc" element={<Skeleton />} />
         <Route path="/myorder" element={<AllOrder />} />
-        <Route path="/trackorder" element={<Trackorder />} />
+        <Route path="/trackorder/:id" element={<Trackorder />} />
         <Route path="/error" element={<Errorpage/>} />
         <Route path="*" element={<Errorpage/>} />
       </Routes>

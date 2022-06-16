@@ -1,6 +1,6 @@
 .allorderpage{
     width: 100%;
-    min-height: 70pv;
+    min-height: 70vh;
     padding: 20px 15px;
     display: flex;
     flex-direction: column;
