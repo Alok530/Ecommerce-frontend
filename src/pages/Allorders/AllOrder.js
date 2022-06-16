@@ -4,22 +4,46 @@ import Footer from '../../components/footer/Footer';
 import MyorderItem from '../../components/myorderItem/MyorderItem';
 import Navbar from '../../components/navbar/Navbar';
 import './allorder.css';
+import { useState, useEffect } from 'react';
+import axiosInstance from '../../config';
+import axios from 'axios';
+
+const host = "http://localhost:5000/api/";
+
 
 function AllOrder() {
+    const fetchallorder = async () => {
+        try {
+            let userId = window.localStorage.getItem('ecomuserid');
+            const response = await axios.get(host + `order/fetchallorder/${userId}`);
+            setallorder(response.data.temp);
+            console.log(response.data.temp);
+        } catch (error) {
+            console.log('err-or inside fetchallorder', error);
+        }
+    };
+
+    const [allorder, setallorder] = useState([]);
+
+    useEffect(() => {
+        fetchallorder();
+    }, [])
+
     return (
         <>
             <Navbar />
             <div className="allorderpage">
                 <h2>Your Orders</h2>
                 <div className="allorders">
-                    <MyorderItem />
-                    <MyorderItem />
-                    <MyorderItem />
-                    <MyorderItem />
+                    {
+                        allorder.map((item)=>{
+                            return 
+                        })
+                    }
                 </div>
             </div>
-            <Footer/>
-            <Bottom/>
+            <Footer />
+            <Bottom />
         </>
     )
 }

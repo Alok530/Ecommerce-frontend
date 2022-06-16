@@ -1,5 +1,7 @@
 import React from 'react';
-import './myorderitem.css'
+import './myorderitem.css';
+
+const host = "http://localhost:5000/api/";
 
 function MyorderItem() {
     return (
@@ -15,7 +17,7 @@ function MyorderItem() {
                 <div className="ordersubdivInSmall">
                     <img src="images/img3.jpg" />
                     <div className='ms-2 d-flex flex-column justify-content-center'>
-                        <p>Delivered on Mar 17</p>
+                        <p className='fw-bold'>Delivered on Mar 17</p>
                         <p>T-shirt for men</p>
                     </div>
                 </div>

@@ -34,7 +34,8 @@ function Payment() {
             if(response.data.success){
                 console.log("order placed",response.data);
                 setcartQuantity(0);
-                navigate('/order/'+response.data.order._id);
+                navigate('/order');
+                // navigate('/order/'+response.data.order._id);
             }else{
 
             }

@@ -37,7 +37,7 @@ function Order() {
     }
 
     useEffect(() => {
-        checkoutorder();
+        // checkoutorder();
     }, [])
 
     return (
