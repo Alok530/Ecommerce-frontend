@@ -10,6 +10,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import products from '../../products';
 import axiosInstance from '../../config';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const host = "http://localhost:5000/api/";
 
@@ -109,7 +110,7 @@ function Trackorder() {
                                 </div>
                             </div>
                         </div>
-                    </div></> : ''}
+                    </div></> : <div className="progressCicle"><CircularProgress /></div>}
             </div>
             <Footer />
             <Bottom />

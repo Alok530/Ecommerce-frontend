@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import products from '../../products';
 import axiosInstance from '../../config';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const host = "http://localhost:5000/api/";
 
@@ -69,7 +70,7 @@ function MyorderItem({ id }) {
                 <div className="ordersubdiv">
                     <p className='fw-bold'>Delivered on Mar 17</p>
                 </div>
-            </div> : ''}
+            </div> : <div className="progressCicle"><CircularProgress /></div>}
         </>
     )
 }
