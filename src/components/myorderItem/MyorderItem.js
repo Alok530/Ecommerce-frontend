@@ -3,6 +3,7 @@ import './myorderitem.css';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import products from '../../products';
+import axiosInstance from '../../config';
 
 const host = "http://localhost:5000/api/";
 
@@ -15,7 +16,7 @@ function MyorderItem({ id }) {
     const fetchorder = async () => {
         try {
             setisfetching(true);
-            const response = await axios.get(host + 'order/checkorderexist/' + id);
+            const response = await axiosInstance.get('order/checkorderexist/' + id);
             if (!response.data.isExist) {
                 navigate('/error');
             }

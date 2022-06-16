@@ -15,7 +15,7 @@ function AllOrder() {
     const fetchallorder = async () => {
         try {
             let userId = window.localStorage.getItem('ecomuserid');
-            const response = await axios.get(host + `order/fetchallorder/${userId}`);
+            const response = await axiosInstance.get(`order/fetchallorder/${userId}`);
             setallorder(response.data.temp);
             console.log(response.data.temp);
         } catch (error) {
