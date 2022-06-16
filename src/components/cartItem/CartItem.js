@@ -9,6 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EcartContext from '../../context/CartContext';
 import axiosInstance from '../../config';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const host = "http://localhost:5000/api/";
 
@@ -23,11 +24,14 @@ function CartItem({ id, quantity, price}) {
         for (let i = 0; i < products.length; i++) {
             if (products[i].id == productID) {
                 setproduct(products[i]);
+                break;
             }
         }
+        setisfetching(false);
     }
 
-    const [DisplayNone, setDisplayNone] = useState("")
+    const [DisplayNone, setDisplayNone] = useState("");
+    const [isfetching, setisfetching] = useState(true);
 
     const removefun = async () => {
         try {
@@ -80,7 +84,7 @@ function CartItem({ id, quantity, price}) {
     return (
         <>
         <ToastContainer />
-            <div className={`cartitem ${DisplayNone}`}>
+            {!isfetching?<div className={`cartitem ${DisplayNone}`}>
                 <div className="cartItemPic">
                     <img src={product.image} />
                 </div>
@@ -101,7 +105,7 @@ function CartItem({ id, quantity, price}) {
                         <AddCircleOutlineTwoToneIcon className='quantitytIcon' onClick={() => { increaseQuantity()  }} />
                     </div>
                 </div>
-            </div>
+            </div>:<div className="progressCicle"><CircularProgress /></div>}
         </>
     )
 }
