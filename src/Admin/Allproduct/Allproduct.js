@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import Bottom from '../Bottom/Bottom';
 import Footer from '../../components/footer/Footer';
 import './allproduct.css';
+import { Link } from 'react-router-dom';
 
 function Allreview() {
     const [id, setid] = useState("62a47863937ce1af55fad9ca");
@@ -26,28 +27,28 @@ function Allreview() {
                                 <td id='tableId'>Biskit</td>
                                 <td id=''>5</td>
                                 <td id='tableId'>599.0</td>
-                                <td id=''><i className="bi bi-pencil-fill"></i></td>
+                                <td id=''><Link to={'/admin/action/product'} style={{'textDecoration':'none','color':'black'}}><i className="bi bi-pencil-fill"></i></Link></td>
                             </tr>
                             <tr>
                                 <td scope="row">{id.slice(0,10)}</td>
                                 <td id='tableId'>Biskit</td>
                                 <td id=''>5</td>
                                 <td id='tableId'>599.0</td>
-                                <td id=''><i className="bi bi-pencil-fill"></i></td>
+                                <td id=''><Link to={'/admin/action/product'} style={{'textDecoration':'none','color':'black'}}><i className="bi bi-pencil-fill"></i></Link></td>
                             </tr>
                             <tr>
                                 <td scope="row">{id.slice(0,10)}</td>
                                 <td id='tableId'>Biskit</td>
                                 <td id=''>5</td>
                                 <td id='tableId'>599.0</td>
-                                <td id=''><i className="bi bi-pencil-fill"></i></td>
+                                <td id=''><Link to={'/admin/action/product'} style={{'textDecoration':'none','color':'black'}}><i className="bi bi-pencil-fill"></i></Link></td>
                             </tr>
                             <tr>
                                 <td scope="row">{id.slice(0,10)}</td>
                                 <td id='tableId'>Biskit</td>
                                 <td id=''>5</td>
                                 <td id='tableId'>599.0</td>
-                                <td id=''><i className="bi bi-pencil-fill"></i></td>
+                                <td id=''><Link to={'/admin/action/product'} style={{'textDecoration':'none','color':'black'}}><i className="bi bi-pencil-fill"></i></Link></td>
                             </tr>
                         </tbody>
                     </table>

@@ -10,6 +10,7 @@ import ShipOrder from '../AdminShipOrder/ShipOrder';
 import './admin.css';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Adminprofile from '../Adminprofile/Adminprofile';
+import Product from '../Product/Product';
 
 function Admin() {
     
@@ -26,6 +27,7 @@ function Admin() {
                     <Route path="/shiping/order" element={<ShipOrder />} />
                     <Route path="/products" element={<Allproduct />} />
                     <Route path="/addnewproduct" element={<Sell />} />
+                    <Route path="/action/product" element={<Product />} />
                 </Routes>
             </div>
             <Footer/>
