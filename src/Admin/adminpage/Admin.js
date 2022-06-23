@@ -11,6 +11,7 @@ import './admin.css';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Adminprofile from '../Adminprofile/Adminprofile';
 import Product from '../Product/Product';
+import Register from '../Register/Register';
 
 function Admin() {
     

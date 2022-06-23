@@ -20,5 +20,7 @@
 @media (max-width:800px){
     .sellform{
         width: 93%;
+        margin-top: 15%;
+        margin-bottom: 8%;
     }
 }

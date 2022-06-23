@@ -19,6 +19,7 @@ import AllOrder from './pages/Allorders/AllOrder'
 import Trackorder from './pages/TrackOrder/Trackorder'
 
 import Admin from './Admin/adminpage/Admin';
+import AdminRegister from './Admin/Register/Register';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path="/myorder" element={<AllOrder />} />
         <Route path="/trackorder/:id" element={<Trackorder />} />
         
+        <Route path="/admin/register" element={<AdminRegister />} />
         <Route path="/admin/*" element={<Admin />} />
         
         <Route path="/error" element={<Errorpage/>} />

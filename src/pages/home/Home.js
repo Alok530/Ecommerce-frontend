@@ -8,6 +8,7 @@ import Bottom from '../../components/Bottom/Bottom'
 import Fproduct from '../../components/FeaturedProduct/Fproduct'
 import { useEffect, useState, useContext } from 'react';
 import EcartContext from '../../context/CartContext';
+import { Link } from 'react-router-dom'
 
 const host = "http://localhost:5000/api/";
 
@@ -80,6 +81,12 @@ function Home() {
             <Fproduct imgUrl={'/images/img10.jpg'} />
             <Fproduct imgUrl={'/images/img1.jpg'} />
             <Fproduct imgUrl={'/images/img8.jpg'} />
+          </div>
+          <div className="sellerdiv">
+            <div className="seller">
+              <h2>Became a Sellers</h2>
+              <Link to={'/admin/register'}><button className='ms-3 sellerbtn'>Register Now</button></Link>
+            </div>
           </div>
         </div>
       </div>
