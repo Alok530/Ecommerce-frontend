@@ -15,39 +15,39 @@ function Allreview() {
                             <tr style={{ 'backgroundColor': 'rgb(255, 63, 127)', 'color': 'white' }}>
                                 <th scope="col">Product Id</th>
                                 <th id='tableId' scope="col">Name</th>
-                                <th id='tableId' scope="col">Stock</th>
+                                <th id='' scope="col">Stock</th>
                                 <th id='tableId' scope="col">Price</th>
-                                <th id='tableId' scope="col">Action</th>
+                                <th id='' scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td scope="row">{id.slice(0,10)}</td>
                                 <td id='tableId'>Biskit</td>
-                                <td id='tableId'>5</td>
+                                <td id=''>5</td>
                                 <td id='tableId'>599.0</td>
-                                <td id='tableId'><i className="bi bi-pencil-fill"></i></td>
+                                <td id=''><i className="bi bi-pencil-fill"></i></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">{id.slice(0,10)}</td>
+                                <td id='tableId'>Biskit</td>
+                                <td id=''>5</td>
+                                <td id='tableId'>599.0</td>
+                                <td id=''><i className="bi bi-pencil-fill"></i></td>
                             </tr>
                             <tr>
                                 <td scope="row">{id.slice(0,10)}</td>
                                 <td id='tableId'>Biskit</td>
                                 <td id='tableId'>5</td>
                                 <td id='tableId'>599.0</td>
-                                <td id='tableId'><i className="bi bi-pencil-fill"></i></td>
+                                <td id=''><i className="bi bi-pencil-fill"></i></td>
                             </tr>
                             <tr>
                                 <td scope="row">{id.slice(0,10)}</td>
                                 <td id='tableId'>Biskit</td>
-                                <td id='tableId'>5</td>
+                                <td id=''>5</td>
                                 <td id='tableId'>599.0</td>
-                                <td id='tableId'><i className="bi bi-pencil-fill"></i></td>
-                            </tr>
-                            <tr>
-                                <td scope="row">{id.slice(0,10)}</td>
-                                <td id='tableId'>Biskit</td>
-                                <td id='tableId'>5</td>
-                                <td id='tableId'>599.0</td>
-                                <td id='tableId'><i className="bi bi-pencil-fill"></i></td>
+                                <td id=''><i className="bi bi-pencil-fill"></i></td>
                             </tr>
                         </tbody>
                     </table>
