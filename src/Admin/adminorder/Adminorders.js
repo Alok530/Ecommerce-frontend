@@ -13,7 +13,7 @@ function Adminorders() {
                 <h2 className='fw-bolder mt-4'>All Orders</h2>
                     <table className="table table-striped ordertable">
                         <thead>
-                            <tr style={{'backgroundColor':'orangered','color':'white'}}>
+                            <tr style={{'backgroundColor':'rgb(255, 63, 127)','color':'white'}}>
                                 <th scope="col">Order Id</th>
                                 <th id='tableId' scope="col">Status</th>
                                 <th id='tableId' scope="col">Amount</th>

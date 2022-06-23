@@ -11,7 +11,7 @@ function Allreview() {
                     <h2 className='fw-bolder mt-4'>All Products</h2>
                     <table className="table table-striped ordertable">
                         <thead>
-                            <tr style={{ 'backgroundColor': 'orangered', 'color': 'white' }}>
+                            <tr style={{ 'backgroundColor': 'rgb(255, 63, 127)', 'color': 'white' }}>
                                 <th scope="col">Product Id</th>
                                 <th id='tableId' scope="col">Name</th>
                                 <th id='tableId' scope="col">Stock</th>
