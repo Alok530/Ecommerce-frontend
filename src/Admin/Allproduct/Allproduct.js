@@ -1,9 +1,10 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Bottom from '../Bottom/Bottom';
 import Footer from '../../components/footer/Footer';
 import './allproduct.css';
 
 function Allreview() {
+    const [id, setid] = useState("62a47863937ce1af55fad9ca");
     return (
         <>
             <div className="adminallproductpage">
@@ -21,28 +22,28 @@ function Allreview() {
                         </thead>
                         <tbody>
                             <tr>
-                                <td scope="row">1374jdhf3748</td>
+                                <td scope="row">{id.slice(0,10)}</td>
                                 <td id='tableId'>Biskit</td>
                                 <td id='tableId'>5</td>
                                 <td id='tableId'>599.0</td>
                                 <td id='tableId'><i className="bi bi-pencil-fill"></i></td>
                             </tr>
                             <tr>
-                                <td scope="row">1374jdhf3748</td>
+                                <td scope="row">{id.slice(0,10)}</td>
                                 <td id='tableId'>Biskit</td>
                                 <td id='tableId'>5</td>
                                 <td id='tableId'>599.0</td>
                                 <td id='tableId'><i className="bi bi-pencil-fill"></i></td>
                             </tr>
                             <tr>
-                                <td scope="row">1374jdhf3748</td>
+                                <td scope="row">{id.slice(0,10)}</td>
                                 <td id='tableId'>Biskit</td>
                                 <td id='tableId'>5</td>
                                 <td id='tableId'>599.0</td>
                                 <td id='tableId'><i className="bi bi-pencil-fill"></i></td>
                             </tr>
                             <tr>
-                                <td scope="row">1374jdhf3748</td>
+                                <td scope="row">{id.slice(0,10)}</td>
                                 <td id='tableId'>Biskit</td>
                                 <td id='tableId'>5</td>
                                 <td id='tableId'>599.0</td>
