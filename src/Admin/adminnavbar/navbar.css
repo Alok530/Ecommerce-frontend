@@ -1,0 +1,140 @@
+.topbarContainer {
+  height: 50px;
+  width: 100%;
+  background-color: rgb(255, 63, 127);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  /* box-shadow: 0px 5px 12px -5px rgba(0, 0, 0, 0.8); */
+}
+
+.link {
+  color: white;
+  list-style: none;
+  text-decoration: none;
+  font-weight: 700;
+  opacity: 1;
+}
+
+.col1 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 30%;
+}
+
+.col1 span {
+  font-weight: 700;
+  font-size: 25px;
+  margin-left: 25px;
+  cursor: pointer;
+}
+
+.col2 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* border: 1px solid white; */
+  width: 40%;
+}
+
+.col2 span {
+  cursor: pointer;
+}
+
+.col3 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 25px;
+  width: 30%;
+}
+
+.col3 .bottomIconlink h3 {
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.loginBtn {
+  color: white;
+  border: 2px solid white;
+  background-color: none;
+  border-radius: 5px;
+  padding: 1px 5px;
+  cursor: pointer;
+}
+
+
+.navcategories {
+  flex-direction: row;
+  /* display: none; */
+  align-items: center;
+}
+
+.navcategoriesDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.navbarIcon {
+  color: white;
+  height: 25px;
+  /* margin-bottom: 5px; */
+}
+
+.cartItemCount {
+  position: relative;
+  bottom: 8px;
+  font-weight: 500;
+  background-color: blueviolet;
+  color: white;
+  padding: 3px 6px;
+  border-radius: 50%;
+}
+
+
+.selectnav {
+  opacity: 0.7;
+}
+
+
+
+@media (max-width:700px) {
+  .col1 {
+    /* border: 1px solid white; */
+    width: 50%;
+  }
+
+  .col2 {
+    display: none;
+  }
+
+  .col1 span {
+    margin-left: 12px;
+  }
+
+  .col3 {
+    width: 50%;
+    padding-right: 12px;
+    /* border: 1px solid white; */
+  }
+
+  .loginBtn {
+    font-size: 12px;
+    padding: 1px 3px;
+    border-radius: 4px;
+  }
+
+  .topbarContainer {
+    box-shadow: none;
+  }
+}

@@ -1,0 +1,34 @@
+.adminprofilepage{
+    flex: 10;
+    width: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.adminprofilediv{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+.profilecard{
+    width: 40%;
+}
+.profilecard ul{
+    border: 1px solid black;
+}
+.profilecard ul li{
+    border: 1px solid black;
+}
+
+@media (max-width:800px){
+    .adminprofilepage{
+        flex: 12;
+        width: 100%;
+    }
+    .profilecard{
+        width: 92%;
+    }
+}

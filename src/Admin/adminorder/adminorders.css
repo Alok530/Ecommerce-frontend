@@ -1,0 +1,47 @@
+.dashboardpage{
+    flex: 10;
+    min-height: 100vh;
+}
+.dashboard{
+    padding: 23px;
+}
+.ordersDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    background-color: orangered;
+    padding: 7px 5px;
+}
+.ordersDiv p{
+    margin: 0px;
+    font-weight: bold;
+}
+.individualOrder{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 5px;
+    background-color: gainsboro;
+    margin-top: 4px;
+    margin-bottom: 2px;
+}
+.individualOrder p{
+    margin: 0px;
+}
+.individualorderbox{
+    width: 25%;
+}
+
+
+.ordertable{
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+}
+
+@media (max-width:800px){
+    #tableId{
+        display: none;
+    }
+}

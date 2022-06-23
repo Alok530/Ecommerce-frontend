@@ -1,0 +1,37 @@
+.adminnavbarpage {
+    flex: 2;
+    position: sticky;
+    top: 50px;
+    min-height: 80vh;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 2px solid gray;
+}
+.adnavbar{
+    padding: 23px 12px;
+    width: 100%;
+}
+.adnavbar li{
+    list-style: none;
+    cursor: pointer;
+}
+.adminnavListitem{
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 35px;
+}
+.adminnavListitem p{
+    margin: 0px;
+}
+.navlink{
+    text-decoration: none;
+    color: black;
+}
+@media (max-width:800px){
+    .adminnavbarpage{
+        display: none;
+    }
+}

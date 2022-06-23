@@ -32,9 +32,9 @@ function Payment() {
             const userId = window.localStorage.getItem('ecomuserid');
             const response = await axiosInstance.post('order/placedorder', { userId, price });
             if(response.data.success){
-                console.log("order placed",response.data);
+                // console.log("order placed",response.data);
                 setcartQuantity(0);
-                navigate('/order');
+                navigate('/myorder');
                 // navigate('/order/'+response.data.order._id);
             }else{
 

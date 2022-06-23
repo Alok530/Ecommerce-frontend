@@ -13,11 +13,12 @@ import UpdatePassword from './pages/UpdatePassword/UpdatePassword'
 import UpdateProfile from './pages/UpdateProfile/UpdateProfile'
 import Login from './pages/LoginReg/Login'
 import Register from './pages/LoginReg/Register'
-import Tostify from './components/Tostify/Tostify'
 import AllproductsPage from './pages/AllProducts/AllproductsPage'
 import Errorpage from './components/404page/Errorpage'
 import AllOrder from './pages/Allorders/AllOrder'
 import Trackorder from './pages/TrackOrder/Trackorder'
+
+import Admin from './Admin/adminpage/Admin';
 
 function App() {
   return (
@@ -39,6 +40,9 @@ function App() {
         <Route path="/skc" element={<Skeleton />} />
         <Route path="/myorder" element={<AllOrder />} />
         <Route path="/trackorder/:id" element={<Trackorder />} />
+        
+        <Route path="/admin/*" element={<Admin />} />
+        
         <Route path="/error" element={<Errorpage/>} />
         <Route path="*" element={<Errorpage/>} />
       </Routes>
