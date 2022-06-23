@@ -38,7 +38,7 @@ function Allreview() {
                             <tr>
                                 <td scope="row">{id.slice(0,10)}</td>
                                 <td id='tableId'>Biskit</td>
-                                <td id='tableId'>5</td>
+                                <td id=''>5</td>
                                 <td id='tableId'>599.0</td>
                                 <td id=''><i className="bi bi-pencil-fill"></i></td>
                             </tr>
