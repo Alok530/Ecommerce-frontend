@@ -1,4 +1,4 @@
-import {React,useContext,useEffect} from 'react'
+import { React, useContext, useEffect } from 'react'
 import Bottom from '../../components/Bottom/Bottom'
 import Footer from '../../components/footer/Footer'
 import Navbar from '../../components/navbar/Navbar'
@@ -62,7 +62,7 @@ function Register() {
             <ToastContainer toastStyle={{ backgroundColor: "red" }} />
             <Navbar />
             <div className="paymentpage" style={{ 'minHeight': '80vh' }}>
-                <div className="cardinfo mt-4">
+                <div className="cardinfo my-4">
                     <h2 className='text-center mb-4 fw-bolder'>Register</h2>
                     <form onSubmit={registerfun}>
                         <div className="cardInput"><AccountCircleIcon className='me-2' /><input type="text" minLength={3} value={username} required onChange={(e) => { setusername(e.target.value) }} placeholder='Full Name' /></div>
@@ -75,6 +75,7 @@ function Register() {
                         <Link to={'/'} style={{ textDecoration: 'none' }}><p className='mb-0 text-center'>Skip Now</p></Link>
                     </div>
                 </div>
+                <span className='fw-bold'>Became a Seller &nbsp;&nbsp; <Link to={'/admin/register'} style={{'textDecoration':'none'}}>  Register Now</Link></span>
             </div>
             <Footer />
         </>

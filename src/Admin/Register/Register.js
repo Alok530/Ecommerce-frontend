@@ -15,7 +15,7 @@ function Register() {
     return (
         <>
             <Navbar />
-            <div className="sellpage">
+            <div className="sellpage" style={{'minHeight':'70vh'}}>
                 <div className="sellform">
                     <h3 className='fw-bolder mb-2'>Register Your Shop</h3>
                     <form className="row g-3">
