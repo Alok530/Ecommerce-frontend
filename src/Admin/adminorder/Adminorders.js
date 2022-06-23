@@ -15,41 +15,35 @@ function Adminorders() {
                         <thead>
                             <tr style={{'backgroundColor':'rgb(255, 63, 127)','color':'white'}}>
                                 <th scope="col">Order Id</th>
-                                <th id='tableId' scope="col">Status</th>
+                                <th scope="col">Status</th>
                                 <th id='tableId' scope="col">Amount</th>
-                                <th id='tableId' scope="col">Action</th>
+                                <th id='' scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td scope="row">1374jdhf3748</td>
-                                <td id='tableId' style={{'color':'red'}}>Processing</td>
+                                <td style={{'color':'red'}}><Link to={'/admin/shiping/order'} style={{'textDecoration':'none'}}>Processing</Link></td>
                                 <td id='tableId'>599.0</td>
-                                <td id='tableId'><Link to={'/admin/shiping/order'}><i className="bi bi-pencil-fill"></i></Link></td>
+                                <td id=''><Link to={'/admin/shiping/order'}><i className="bi bi-pencil-fill"></i></Link></td>
                             </tr>
                             <tr>
                                 <td scope="row">1374jdhf3748</td>
-                                <td id='tableId' style={{'color':'red'}}>Processing</td>
+                                <td style={{'color':'red'}}><Link to={'/admin/shiping/order'} style={{'textDecoration':'none'}}>Processing</Link></td>
                                 <td id='tableId'>599.0</td>
-                                <td id='tableId'><Link to={'/admin/shiping/order'}><i className="bi bi-pencil-fill"></i></Link></td>
+                                <td id=''><Link to={'/admin/shiping/order'}><i className="bi bi-pencil-fill"></i></Link></td>
                             </tr>
                             <tr>
                                 <td scope="row">1374jdhf3748</td>
-                                <td id='tableId' style={{'color':'red'}}>Processing</td>
+                                <td style={{'color':'red'}}><Link to={'/admin/shiping/order'} style={{'textDecoration':'none'}}>Processing</Link></td>
                                 <td id='tableId'>599.0</td>
-                                <td id='tableId'><Link to={'/admin/shiping/order'}><i className="bi bi-pencil-fill"></i></Link></td>
+                                <td id=''><Link to={'/admin/shiping/order'}><i className="bi bi-pencil-fill"></i></Link></td>
                             </tr>
                             <tr>
                                 <td scope="row">1374jdhf3748</td>
-                                <td id='tableId' style={{'color':'red'}}>Processing</td>
+                                <td style={{'color':'red'}}><Link to={'/admin/shiping/order'} style={{'textDecoration':'none'}}>Processing</Link></td>
                                 <td id='tableId'>599.0</td>
-                                <td id='tableId'><Link to={'/admin/shiping/order'}><i className="bi bi-pencil-fill"></i></Link></td>
-                            </tr>
-                            <tr>
-                                <td scope="row">1374jdhf3748</td>
-                                <td id='tableId' style={{'color':'red'}}>Processing</td>
-                                <td id='tableId'>599.0</td>
-                                <td id='tableId'><Link to={'/admin/shiping/order'}><i className="bi bi-pencil-fill"></i></Link></td>
+                                <td id=''><Link to={'/admin/shiping/order'}><i className="bi bi-pencil-fill"></i></Link></td>
                             </tr>
                         </tbody>
                     </table>
