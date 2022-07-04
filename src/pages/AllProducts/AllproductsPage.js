@@ -12,6 +12,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import Slider from '@mui/material/Slider';
 
 function AllproductsPage() {
+    const [items, setitems] = useState(products);
+
     const { scrolltoTopfun } = useContext(EcartContext);
     const [inputval, setinputval] = useState(1);
     const [filtter, setfiltter] = useState("");
@@ -64,14 +66,56 @@ function AllproductsPage() {
         setfilterbutton(0);
     }
 
+
+    //------------------****************--------------
+    const [popularity, setpopularity] = useState(0);
+    const [lowtohigh, setlowtohigh] = useState(0);
+    const [hightolow, sethightolow] = useState(0);
+    const [sortingstatus, setsortingstatus] = useState(0);
+
+    const sortfun = (sortCriteria) => {
+        // setsortStatus(1);
+        products.sort(function (a, b) {
+            if (sortCriteria === 'price')
+                return a.price - b.price;
+            else
+                if (sortCriteria === 'ratting')
+                    return b.ratting - a.ratting;
+                else if(hightolow)
+                    return b.price - a.price;
+        });
+        const temp = products;
+        setsortingstatus(1);
+        setitems(temp);
+    }
+
+    useEffect(() => {
+      if(lowtohigh){
+        sortfun('price');
+      }
+    }, [lowtohigh])
+
+    useEffect(() => {
+        if(popularity){
+          sortfun('ratting');
+        }
+    }, [popularity])
+
+    useEffect(() => {
+        if(hightolow){
+          sortfun('hightolow');
+        }
+    }, [hightolow])
+    
+
     return (
         <>
             <Navbar />
             <div className='filterSortingBtn'>
-                <div className="filterBtn" style={{'borderLeft':'none','borderTop':'none'}} onClick={()=>{controlSortButton()}}>
+                <div className="filterBtn" style={{ 'borderLeft': 'none', 'borderTop': 'none' }} onClick={() => { controlSortButton() }}>
                     <span>Sorting</span>
                 </div>
-                <div className="filterBtn"  style={{'borderTop':'none','borderRight':'none'}} onClick={()=>{controlfilterButton()}}>
+                <div className="filterBtn" style={{ 'borderTop': 'none', 'borderRight': 'none' }} onClick={() => { controlfilterButton() }}>
                     <span>Filter</span>
                 </div>
             </div>
@@ -119,6 +163,21 @@ function AllproductsPage() {
                     />
                     <button onClick={() => { setsortbutton(0); setfilterbutton(0); }} className="applyBtn">Apply</button>
                 </div> : ''}
+                {sortbutton ? <div className="itemfilter">
+                    <div className="d-flex justify-content-between mb-1">
+                        <h5 className='fw-bold my-0'>Sortings</h5>
+                        <h6 className='my-0' onClick={() => {setsortingstatus(0); setpopularity(0); setlowtohigh(0); sethightolow(0); setline(0)}} style={{ 'cursor': 'pointer', 'color': 'blue' }}>Clear All</h6>
+                    </div>
+                    <hr className='mt-0 mb-2' />
+                    <h5>Sort By</h5>
+                    <ul style={{ 'listStyle': 'none', 'paddingLeft': '10px', 'cursor': 'pointer' }}>
+                        <li className={line == 1 ? onclickClass : ''} onClick={() => { setpopularity(1); setlowtohigh(0); sethightolow(0); setonclickClass("filtterselect"); setline(1) }}>Popularity</li>
+                        <li className={line == 2 ? onclickClass : ''} onClick={() => { setlowtohigh(1); setpopularity(0); sethightolow(0);setonclickClass("filtterselect"); setline(2) }}>Price -- Low to High</li>
+                        <li className={line == 3 ? onclickClass : ''} onClick={() => { sethightolow(1); setpopularity(0); setlowtohigh(0); setonclickClass("filtterselect"); setline(3) }}>Price -- High to Low</li>
+                    </ul>
+                    <button onClick={() => { setsortbutton(0); setfilterbutton(0); }} className="applyBtn">Apply</button>
+                </div> 
+                : ''}
             </div>
             {(filterbutton == 0 && sortbutton == 0) ? <div className="allproductPage">
                 <div className="fillter">
@@ -178,7 +237,7 @@ function AllproductsPage() {
                             })
                         }
                         {
-                            qyery !== "" && (products.filter((item) => item.tittle.toLowerCase().includes(qyery.toLowerCase()))).map((item) => {
+                            qyery !== "" && (items.filter((item) => item.tittle.toLowerCase().includes(qyery.toLowerCase()))).map((item) => {
                                 return <Item key={item.id} item={item} cat={filtter} ratting={ratting} filterprice={filterprice} />
                             })
                         }

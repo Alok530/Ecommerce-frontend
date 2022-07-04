@@ -50,12 +50,12 @@ const CartStateContext = (props) => {
         if (window.localStorage.getItem('ecomuserid')) {
             const id = window.localStorage.getItem('ecomuserid');
             const response = await axiosInstance.get('cart/fetchcart/' + id);
-            if (!response.data) {
+            // const response = await axios.get(host+'cart/fetchcart/' + id);
+            if (response.data.length==0) {
                 setcartQuantity(0);
                 return;
             } else {
                 setcartQuantity(response.data.length);
-                // setcartQuantity(10);
             }
         }
     }
