@@ -55,12 +55,12 @@ function Addtocart() {
         <>
             <Navbar />
             <div className="cartpage">
-                {cartQuantity > 0 ? <>
+                {cartQuantity>0 && cartproducts.length > 0 ? <>
                     <h2 className='text-center mb-4'>Your Bag</h2>
                     <div className="cart">
                         <div className="cartProducts">
                             {
-                                cartproducts.map((item) => {
+                                cartproducts.length>0 && cartproducts.map((item) => {
                                     return <CartItem key={item.productId} id={item.productId} quantity={item.quantity} price={item.price} />
                                 })
                             }

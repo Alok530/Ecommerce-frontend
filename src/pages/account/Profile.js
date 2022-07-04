@@ -49,7 +49,11 @@ function Profile() {
     }, []);
 
     const logoutfun = () => {
-        window.localStorage.removeItem("ecomuserid");
+        const want = window.confirm('Do you want to logout');
+        if (want) {
+            window.localStorage.removeItem("ecomuserid");
+            navigate('/login');
+        }
     }
 
     return (
@@ -59,7 +63,7 @@ function Profile() {
                 <div className="profile">
                     {currentuser == "" ? <Skeleton /> : <>
                         <div className="profilePic mb-3">
-                            <img src="/images/img5.jpg" />
+                            {currentuser.gender=="Male"?<img src="/images/boyface.jpg" />:<img src="/images/girlface.png" />}
                         </div>
                         <div className="profiledesc">
                             <span className='fw-bold'>Name : </span><span> {currentuser.username}</span>
@@ -97,7 +101,7 @@ function Profile() {
                             <span>Change account password</span>
                         </div>
                     </div></Link>
-                    <Link className='settingLink' onClick={() => { logoutfun() }} to={'/login'} style={{ 'textDecoration': 'none', color: 'black' }}><div className='setting'>
+                    <div className='settingLink' onClick={() => { logoutfun() }} style={{ 'textDecoration': 'none', color: 'black' }}><div className='setting'>
                         <div className="settingpic me-2">
                             <LogoutIcon style={{ 'fontSize': '54px' }} />
                         </div>
@@ -105,7 +109,7 @@ function Profile() {
                             <h5>Logout</h5>
                             <span>Return back</span>
                         </div>
-                    </div></Link>
+                    </div></div>
                 </div>
             </div> :
                 <div className="profilepage">

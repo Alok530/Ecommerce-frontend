@@ -44,16 +44,19 @@ const CartStateContext = (props) => {
 
     // for calculate cart items 
     const [cartQuantity, setcartQuantity] = useState(0);
+
     // function for set cart quantity
     const fetchCurrentUserCartLength = async () => {
         if (window.localStorage.getItem('ecomuserid')) {
             const id = window.localStorage.getItem('ecomuserid');
             const response = await axiosInstance.get('cart/fetchcart/' + id);
-            if (response.data == {}) {
+            if (!response.data) {
                 setcartQuantity(0);
                 return;
+            } else {
+                setcartQuantity(response.data.length);
+                // setcartQuantity(10);
             }
-            setcartQuantity(response.data.length);
         }
     }
 

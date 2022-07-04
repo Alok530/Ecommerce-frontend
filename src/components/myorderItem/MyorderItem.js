@@ -21,14 +21,12 @@ function MyorderItem({ id }) {
             if (!response.data.isExist) {
                 navigate('/error');
             }
-            // console.log(id, response.data.isExist, response.data.order);
+            
             for (let i = 0; i < products.length; i++) {
                 if (products[i].id == response.data.order.productId) {
                     setproductIndex(i);
-                    // console.log("index mila", i, id);
                     break;
                 }
-                // console.log("index mila", products[i].id, id);
             }
             setorder(response.data.order);
             setisfetching(false);
@@ -68,7 +66,7 @@ function MyorderItem({ id }) {
                     <p>${order.amount}</p>
                 </div>
                 <div className="ordersubdiv">
-                    <p className='fw-bold'>Delivered on Mar 17</p>
+                    <p className='fw-bold'>Order Confirmed</p>
                 </div>
             </div> : <div className="progressCicle"><CircularProgress /></div>}
         </>

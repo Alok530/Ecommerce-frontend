@@ -25,21 +25,21 @@ function Trackorder() {
         try {
             setisfetching(true);
             const response = await axiosInstance.get('order/checkorderexist/' + id);
+            console.log(response.data);
             if (!response.data.isExist) {
                 navigate('/error');
-            }
-            // console.log(id, response.data.isExist, response.data.order);
-            for (let i = 0; i < products.length; i++) {
-                if (products[i].id == response.data.order.productId) {
-                    setproductIndex(i);
-                    // console.log("index mila", i, id);
-                    break;
+            } else {
+                for (let i = 0; i < products.length; i++) {
+                    if (products[i].id == response.data.order.productId) {
+                        setproductIndex(i);
+                        break;
+                    }
                 }
-                // console.log("index mila", products[i].id, id);
+                setorder(response.data.order);
+                setisfetching(false);
             }
-            setorder(response.data.order);
-            setisfetching(false);
         } catch (error) {
+            navigate('/error');
             console.log("error inside fetchorder", error);
         }
     }
@@ -75,8 +75,8 @@ function Trackorder() {
                         <span className=''>Delivered</span>
                     </div>
                 </div>
-                <span className="fw-bold">Order Id:- </span>
-                <span style={{'color':'blue'}}>{id}</span>
+                    <span className="fw-bold">Order Id:- </span>
+                    <span style={{ 'color': 'blue' }}>{id}</span>
                     <div className="trackorderdiv2 my-4">
                         <div className="OrderAddress">
                             <div className="orderAddress" style={{ 'width': '100%' }}>

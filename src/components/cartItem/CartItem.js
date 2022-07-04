@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import EcartContext from '../../context/CartContext';
 import axiosInstance from '../../config';
 import CircularProgress from '@mui/material/CircularProgress';
+import { Link } from 'react-router-dom';
 
 const host = "http://localhost:5000/api/";
 
@@ -85,9 +86,9 @@ function CartItem({ id, quantity, price}) {
         <>
         <ToastContainer />
             {!isfetching?<div className={`cartitem ${DisplayNone}`}>
-                <div className="cartItemPic">
+                <Link to={`/product/${product.id}`}><div className="cartItemPic">
                     <img src={product.image} />
-                </div>
+                </div></Link>
                 <div className='cartItemRight'>
                     <div className="cartItemDesc ps-1">
                         <span>{product.tittle}</span>

@@ -47,7 +47,7 @@ function Order() {
                 <div className="order text-center">
                     <CheckCircleIcon style={{ 'fontSize': '60px', color: 'orangered' }} />
                     <h2 id='temp'>Your Order has been Placed Successfully {orderId} </h2>
-                    <Link style={{'textDecoration':'none'}} to='/trackorder'><button className='orderBtn mt-0' style={{ width: '40%' }}>View Order</button></Link>
+                    <Link style={{'textDecoration':'none'}} to='/myorder'><button className='orderBtn mt-0' style={{ width: '40%' }}>View Order</button></Link>
                 </div>
             </div>
             <Footer />

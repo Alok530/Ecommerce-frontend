@@ -82,12 +82,12 @@ function Home() {
             <Fproduct imgUrl={'/images/img1.jpg'} />
             <Fproduct imgUrl={'/images/img8.jpg'} />
           </div>
-          <div className="sellerdiv">
+          {/*<div className="sellerdiv">
             <div className="seller">
               <h2 className='m-0'>Became a Sellers</h2>
               <Link to={'/admin/register'} className="m-0"><button className='ms-3 sellerbtn'>Register Now</button></Link>
             </div>
-          </div>
+  </div>*/}
         </div>
       </div>
       <Footer />

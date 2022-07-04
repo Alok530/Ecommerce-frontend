@@ -42,10 +42,10 @@ function App() {
         <Route path="/myorder" element={<AllOrder />} />
         <Route path="/trackorder/:id" element={<Trackorder />} />
         
-        <Route path="/admin/register" element={<AdminRegister />} />
+        {/*<Route path="/admin/register" element={<AdminRegister />} />
         <Route path="/admin/*" element={<Admin />} />
         
-        <Route path="/error" element={<Errorpage/>} />
+  <Route path="/error" element={<Errorpage/>} />*/}
         <Route path="*" element={<Errorpage/>} />
       </Routes>
     </>
